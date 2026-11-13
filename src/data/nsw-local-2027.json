@@ -1,0 +1,10 @@
+[
+ {"date": "2027-02-05", "area": "Walcha local government area", "event": "Walcha Cup", "hours": "part-day, midday to 6pm"},
+ {"date": "2027-02-12", "area": "Locality of Kangaroo Valley, City of Shoalhaven local government area (map on the Shoalhaven City Council website)", "event": "Kangaroo Valley Show", "hours": "9am to 5pm"},
+ {"date": "2027-03-19", "area": "City of Albury local government area", "event": "Albury Gold Cup", "hours": "half-day from midday"},
+ {"date": "2027-05-12", "area": "Coonamble local government area", "event": "Coonamble Show", "hours": "full day"},
+ {"date": "2027-05-14", "area": "Aberdeen, Blandford, Bunnan, Ellerston, Gundy, Moonan Brook, Moonan Flat, Murrurundi, Parkville, Rouchel, Scone, Timor and Wingen, Upper Hunter Shire", "event": "Scone Cup", "hours": "half-day from midday"},
+ {"date": "2027-08-18", "area": "Bogan Gate, Bruie Plains and Trundle (Trundle Show boundaries map, Parkes Shire Council)", "event": "Trundle Show", "hours": "part-day, 9am to 5pm"},
+ {"date": "2027-08-25", "area": "Peak Hill (Peak Hill Show boundaries map, Parkes Shire Council)", "event": "Peak Hill Show", "hours": "part-day, 9am to 5pm"},
+ {"date": "2027-08-31", "area": "Alectown, Cooks Myalls, Goonumbla, Gunningbland, Nelungaloo, Parkes, Tichborne, part of Cookamidgera and part of Mandagery (Parkes Show boundaries map)", "event": "Parkes Show", "hours": "part-day, midday to 5pm"}
+]

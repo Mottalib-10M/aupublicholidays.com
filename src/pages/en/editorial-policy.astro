@@ -1,0 +1,20 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+const lang = 'en';
+---
+<PageLayout title="Editorial policy of AU Public Holidays: sources and corrections" description="How AU Public Holidays checks Australian public holidays and school terms: state government pages and holiday Acts only, every date dated, tested and fixed as soon as an error is reported." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial policy</h1>
+    <p>Every date on this site comes from one calculation engine, loaded with the lists each government publishes. Texts never type dates by hand: they read them from the same engine as the tools, so the text and the results cannot drift apart.</p>
+    <h2>Sources</h2>
+    <p>Primary sources only: the public holiday pages of the state governments, the court calendar of Victoria, the holiday Acts on the official legislation registers, and the term dates of each education department. Each page lists its sources at the bottom with the date they were read.</p>
+    <h2>Checks</h2>
+    <p>Automated tests run on every change: Easter by Gauss against Meeus over a thousand years, every published date against its printed weekday, and the rules of the Tasmanian, ACT and Northern Territory Acts. {AUTHOR_NAME} rereads the sources at least every {REVIEW_CYCLE_MONTHS} months, and when a state publishes a new year. Last check: {LAST_UPDATED}. The site does not update itself: a new list appears only after it has been read and tested.</p>
+    <h2>Corrections</h2>
+    <p>A reported error is compared with the source and, if confirmed, fixed within days. Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('method', lang)}>method</a>.</p>
+    <h2>Independence</h2>
+    <p>No paid placement, no affiliate links, no travel offers. The site is not linked to any government, union or employer.</p>
+  </div>
+</PageLayout>

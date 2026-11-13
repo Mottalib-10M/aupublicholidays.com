@@ -1,0 +1,21 @@
+{
+ "name": "AU Public Holidays",
+ "short_name": "AU Public Holidays",
+ "description": "Public holidays 2027 for every Australian state: long weekends, show days and local holidays, school terms, and a leave planner that finds the best days to book.",
+ "start_url": "/en/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#0F5C4A",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

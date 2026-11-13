@@ -1,0 +1,20 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CONTACT_EMAIL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const description = 'Tell us about an Australian public holiday, show day or school term date that looks wrong, or ask how to put the countdown to the next public holiday on your own website.';
+---
+<PageLayout title="Contact AU Public Holidays: report a date or embed the countdown" description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contact', description, path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>By email, usually answered within a week: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>A date on a page is wrong</h2>
+    <p>Name the page, the date you think is wrong and, if you have it, the gazette notice or government page that says otherwise. We compare it with the source and correct the page if we made a mistake. New proclamations, such as the Victorian AFL Grand Final eve or a one-off holiday, are added once they are published.</p>
+    <h2>The countdown on your site</h2>
+    <p>Clubs, schools, councils and local newsrooms can show the countdown to the next public holiday for free: see <a href={route('widget', lang)}>embed the countdown</a>.</p>
+    <h2>What we cannot help with</h2>
+    <p>We give no advice on pay rates, rosters or your award, do not know the pupil-free days of a particular school and sell no travel.</p>
+  </div>
+</PageLayout>

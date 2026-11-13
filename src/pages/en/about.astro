@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { route } from '../../i18n/routes';
+import { AUTHOR_NAME, AUTHOR_DESC, CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { srcLink } from '../../lib/helpers';
+import { profilePageSchema, organizationSchema, breadcrumbSchema } from '../../lib/seo';
+import { GUIDES } from '../../lib/pages';
+const lang = 'en';
+const path = route('about', lang);
+const title = 'Radif Partners and AU Public Holidays: who, sources, fixes';
+const description = 'Who publishes AU Public Holidays: Radif Partners, independent of any government, union or employer, and where the state holiday lists and term dates come from.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[organizationSchema(lang), profilePageSchema({ path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path }])]} breadcrumbs={[{ label: 'About' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>About {SITE_NAMES[lang]}</h1>
+    <p>{AUTHOR_DESC.en}</p>
+    <h2>Why this site exists</h2>
+    <p>In late 2026, most pages listing the 2027 public holidays gave one national table, with notes in small print for each state. Nobody in Perth needs the Melbourne Cup, and nobody in Brisbane wants to read past the Ekka footnote to find their Labour Day. This site gives each state and territory its own list, says which days are additional days because a holiday falls on a weekend, finds the long weekends, works out where a handful of leave days goes furthest, and adds the school terms and the local show days. {GUIDES.length} topic pages, each with a tool.</p>
+    <h2>Who publishes it</h2>
+    <p>The publisher is {AUTHOR_NAME}, a company that builds planners and calculators on public rules. {AUTHOR_NAME} is not a government agency, a union or an employer body, has no tie to any department and uses no government logo or coat of arms. The site sells no travel and carries no affiliate links.</p>
+    <LegalIdentity lang={lang} />
+    <h2>Where the data comes from</h2>
+    <p>Holiday lists come from the <Fragment set:html={s('nsw-ph', 'NSW Government')} />, the <Fragment set:html={s('qld-ph', 'Queensland Government')} />, the <Fragment set:html={s('wa-ph', 'WA Government')} />, <Fragment set:html={s('sa-ph', 'SafeWork SA')} /> and the <Fragment set:html={s('mcv-2027', 'Magistrates’ Court of Victoria')} />. Tasmania, the ACT and the Northern Territory are worked out from the <Fragment set:html={s('tas-act', 'Statutory Holidays Act 2000')} />, the <Fragment set:html={s('act-act', 'Holidays Act 1958')} /> and the <Fragment set:html={s('nt-act', 'Public Holidays Act 1981')} />. How everything is computed is on the <a href={route('method', lang)}>method</a> page; how we fix errors, in the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+    <h2>Your data</h2>
+    <p>Every tool runs in your browser. Nothing you enter is sent or stored, and there is no account. See the <a href={route('privacy', lang)}>privacy policy</a>.</p>
+    <h2>Write to us</h2>
+    <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> if a date or explanation is wrong.</p>
+  </article>
+</PageLayout>

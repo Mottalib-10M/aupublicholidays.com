@@ -1,0 +1,42 @@
+---
+/** Method: sources, Easter, additional days, Acts of TAS/ACT/NT, long weekends, leave plan, terms, tests, limits. Every figure from the engine. */
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { KIT as K } from '../../lib/kit';
+import { srcLink } from '../../lib/helpers';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+import { dLong, dWeek } from '../../lib/dates';
+const lang = 'en';
+const path = route('method', lang);
+const title = 'Method of AU Public Holidays: sources, Acts, Easter, tests';
+const description = 'How AU Public Holidays works: state government lists, the TAS, ACT and NT holiday Acts, Easter by Gauss and Meeus, additional days, long weekends, leave plans.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const g = K.gaussSteps(2027);
+const tasX = K.tasRules(2027).filter((h) => h.date >= '2027-12-24');
+const act = K.actRules(2027), nt = K.ntRules(2027);
+const p5 = K.plan('nsw', 2027, 5);
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: title, description, path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method', path }])]} breadcrumbs={[{ label: 'Method' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>Method: how the dates are found and checked</h1>
+    <p>Every tool and every sentence on this site reads the same engine, in your browser. Below, for each part, the rule we follow, its source and how we test it. Sources read on {dLong(K.READ_ON)}.</p>
+    <h2>Five states: the list as published</h2>
+    <p>For New South Wales, Queensland, Western Australia and South Australia we copy the list that the state government publishes, date by date, with its notes: <Fragment set:html={s('nsw-ph', 'NSW')} />, <Fragment set:html={s('qld-ph', 'Queensland')} />, <Fragment set:html={s('wa-ph', 'Western Australia')} /> and <Fragment set:html={s('sa-ph', 'South Australia (SafeWork SA)')} />. The Victorian business page refused automated reading, so Victoria comes from the <Fragment set:html={s('mcv-2026', '2026')} /> and <Fragment set:html={s('mcv-2027', '2027')} /> calendars of the Magistrates’ Court of Victoria, which mark every public holiday. A year a state has not yet published, such as NSW and Victoria in 2028, is shown as “not yet published”: nothing is guessed.</p>
+    <h2>Three territories and Tasmania: the Act</h2>
+    <p>The Tasmanian, ACT and Northern Territory government pages refused automated reading, so we apply the rules of each Act. Tasmania: the <Fragment set:html={s('tas-act', 'Statutory Holidays Act 2000')} />, section 4, with Easter Sunday added from 2027; in 2027 Christmas gives {tasX.map((h) => dWeek(h.date)).join(', ')}. ACT: the <Fragment set:html={s('act-act', 'Holidays Act 1958')} />, which gives Canberra Day on the second Monday of March ({dLong(act.find((h) => h.id === 'canberra')!.date)}) and Reconciliation Day on the first Monday on or after 27 May ({dLong(act.find((h) => h.id === 'reconciliation')!.date)}). Northern Territory: the <Fragment set:html={s('nt-act', 'Public Holidays Act 1981')} />, with May Day on {dLong(nt.find((h) => h.id === 'mayday')!.date)}, Picnic Day on {dLong(nt.find((h) => h.id === 'picnic')!.date)} and the evenings of Christmas Eve and New Year’s Eve from 7pm. Days a minister declares by gazette notice each year, such as NT show days, are not in an Act and are not shown.</p>
+    <h2>Additional days when a holiday falls on a weekend</h2>
+    <p>Each state decides whether a holiday falling on a Saturday or Sunday gets another day. We never apply one state’s rule to another: the published lists show the additional days as each government prints them, and for Tasmania, the ACT and the Northern Territory the substitution rules of their Act are coded section by section. In 2027, Christmas Day is a Saturday and Boxing Day a Sunday, which is why most states add Monday 27 and Tuesday 28 December.</p>
+    <h2>Easter by Gauss, checked with Meeus</h2>
+    <p>Easter is the first Sunday after the Paschal full moon. We compute it with Gauss’s formula: for 2027 the Paschal full moon falls on day {g.OG} counted from 1 March, the next Sunday comes {g.OE} days later, so Easter Sunday is {dLong(K.easterSunday(2027))}. A second method, Meeus’s, must give the same date for every year from 1600 to 2600, or the test fails. Good Friday is two days before, Easter Monday one day after.</p>
+    <h2>Long weekends and the leave plan</h2>
+    <p>The calendar is cut into runs of free days (Saturdays, Sundays and full-day public holidays of the state) and runs of working days. A long weekend is a free run of three days or more that contains a weekday holiday. For a given number of leave days, the planner tries every combination of working runs of up to ten days by dynamic programming and keeps the one with the most days off in a row; on a tie, the one that uses fewer leave days. With 5 leave days in NSW in 2027, it finds {p5.off} days off. Part-day and regional holidays are never counted as days off.</p>
+    <h2>School terms</h2>
+    <p>Term dates come from the education department of each state: <Fragment set:html={s('nsw-terms-2027', 'NSW')} />, <Fragment set:html={s('vic-terms', 'Victoria')} />, <Fragment set:html={s('qld-terms', 'Queensland')} />, <Fragment set:html={s('wa-terms', 'Western Australia')} /> and <Fragment set:html={s('tas-terms', 'Tasmania')} />. For South Australia they are derived from the school holiday periods on the <Fragment set:html={s('sa-ph', 'SafeWork SA page')} />. The ACT and Northern Territory term pages refused automated reading, so those terms are not shown.</p>
+    <h2>Local holidays</h2>
+    <p>Queensland show holidays are the <Fragment set:html={s('qld-show', '2027 list of the Queensland Government')} /> (97 districts), NSW local holidays the <Fragment set:html={s('nsw-local', 'NSW list of local public holidays')} />, and Tasmanian regional holidays follow Schedule 1 of the Statutory Holidays Act 2000.</p>
+    <h2>Tests</h2>
+    <p>Automated tests run before every release: Easter against Meeus over a thousand years; every listed Monday holiday falls on a Monday; Tasmanian, ACT and NT rules against known 2027 dates; the leave plan never spends more than the budget and never gives fewer days for more leave; the count of 97 Queensland show holidays on 44 dates.</p>
+    <h2>Licences and limits</h2>
+    <p>NSW, Queensland and Victorian government material is published under CC BY 4.0, used here with credit. The WA Government’s page terms do not allow commercial reproduction of the page, so we state its dates as facts and link to it. This site does not know your award, your roster, the pupil-free days of your school or a holiday announced after {dLong(K.READ_ON)}.</p>
+  </article>
+</PageLayout>

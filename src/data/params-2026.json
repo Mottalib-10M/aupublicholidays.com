@@ -1,0 +1,195 @@
+{
+ "_lisezmoi": "Sources lues le 2026-11-13 (curl). Les dates elles-mêmes vivent dans listed.json, terms.json, qld-show-2027.json et nsw-local-2027.json ; TAS, ACT et NT sont calculés par le moteur depuis leurs lois (engine/rules.ts).",
+ "year": 2027,
+ "retrieved_at": "2026-11-13",
+ "valid_from": "2027-01-01",
+ "valid_to": "2027-12-31",
+ "sources": {
+  "nsw-ph": {
+   "url": "https://www.nsw.gov.au/about-nsw/public-holidays",
+   "label": {
+    "en": "NSW Government — NSW public holidays 2026 to 2027"
+   }
+  },
+  "nsw-local": {
+   "url": "https://www.nsw.gov.au/about-nsw/public-holidays/local-public-holidays",
+   "label": {
+    "en": "NSW Government — Local public holidays in NSW 2027"
+   }
+  },
+  "nsw-copyright": {
+   "url": "https://www.nsw.gov.au/copyright",
+   "label": {
+    "en": "NSW Government — Copyright (CC BY 4.0)"
+   }
+  },
+  "qld-ph": {
+   "url": "https://www.qld.gov.au/recreation/travel/holidays/public",
+   "label": {
+    "en": "Queensland Government — Public holidays 2026 to 2029"
+   }
+  },
+  "qld-show": {
+   "url": "https://www.qld.gov.au/recreation/travel/holidays/show",
+   "label": {
+    "en": "Queensland Government — Show holiday dates 2027"
+   }
+  },
+  "qld-copyright": {
+   "url": "https://www.qld.gov.au/legal/copyright",
+   "label": {
+    "en": "Queensland Government — Copyright (CC BY 4.0)"
+   }
+  },
+  "qld-act": {
+   "url": "https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018",
+   "label": {
+    "en": "Queensland Legislation — Holidays Act 1983"
+   }
+  },
+  "wa-ph": {
+   "url": "https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia",
+   "label": {
+    "en": "Government of Western Australia — Public holidays in Western Australia 2026 to 2029"
+   }
+  },
+  "sa-ph": {
+   "url": "https://www.safework.sa.gov.au/resources/public-holidays",
+   "label": {
+    "en": "SafeWork SA — Public holidays and school holidays 2025 to 2028"
+   }
+  },
+  "mcv-2026": {
+   "url": "https://www.mcv.vic.gov.au/sites/default/files/2025-09/MCV%202026%20calendar.pdf",
+   "label": {
+    "en": "Magistrates' Court of Victoria — 2026 calendar of public holidays and school terms (published 15 September 2025)"
+   }
+  },
+  "mcv-2027": {
+   "url": "https://www.mcv.vic.gov.au/sites/default/files/2026-08/MCV_2027_Calendar.pdf",
+   "label": {
+    "en": "Magistrates' Court of Victoria — 2027 calendar of public holidays and school terms (published 20 August 2026)"
+   }
+  },
+  "vic-business-2027": {
+   "url": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027",
+   "label": {
+    "en": "Business Victoria — Public holidays in Victoria for 2027"
+   }
+  },
+  "vic-copyright": {
+   "url": "https://www.vic.gov.au/copyright",
+   "label": {
+    "en": "Victorian Government — Copyright (CC BY 4.0)"
+   }
+  },
+  "tas-act": {
+   "url": "https://www.legislation.tas.gov.au/view/whole/html/inforce/current/act-2000-096",
+   "label": {
+    "en": "Tasmanian Legislation — Statutory Holidays Act 2000, current version (Easter Sunday added 9 October 2026)"
+   }
+  },
+  "tas-worksafe": {
+   "url": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays",
+   "label": {
+    "en": "WorkSafe Tasmania — Statewide and regional public holidays"
+   }
+  },
+  "act-act": {
+   "url": "https://www.legislation.act.gov.au/a/1958-19/",
+   "label": {
+    "en": "ACT Legislation Register — Holidays Act 1958, republication R11"
+   }
+  },
+  "act-cmtedd": {
+   "url": "https://www.cmtedd.act.gov.au/communication/holidays",
+   "label": {
+    "en": "ACT Government — Public holidays, school terms and daylight saving"
+   }
+  },
+  "nt-act": {
+   "url": "https://legislation.nt.gov.au/Legislation/PUBLIC-HOLIDAYS-ACT-1981",
+   "label": {
+    "en": "NT Legislation — Public Holidays Act 1981, Schedule 2"
+   }
+  },
+  "nt-ph": {
+   "url": "https://nt.gov.au/nt-public-holidays",
+   "label": {
+    "en": "Northern Territory Government — NT public and regional holidays"
+   }
+  },
+  "fairwork-2027": {
+   "url": "https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays",
+   "label": {
+    "en": "Fair Work Ombudsman — 2027 public holidays"
+   }
+  },
+  "fairwork-ph": {
+   "url": "https://www.fairwork.gov.au/employment-conditions/public-holidays",
+   "label": {
+    "en": "Fair Work Ombudsman — Public holidays: entitlements and pay"
+   }
+  },
+  "nsw-terms-2026": {
+   "url": "https://education.nsw.gov.au/schooling/calendars/2026",
+   "label": {
+    "en": "NSW Department of Education — 2026 term dates"
+   }
+  },
+  "nsw-terms-2027": {
+   "url": "https://education.nsw.gov.au/schooling/calendars/2027",
+   "label": {
+    "en": "NSW Department of Education — 2027 term dates, school holidays and development days"
+   }
+  },
+  "qld-terms": {
+   "url": "https://education.qld.gov.au/about-us/calendar/term-dates",
+   "label": {
+    "en": "Queensland Department of Education — 2026 term dates"
+   }
+  },
+  "qld-future": {
+   "url": "https://education.qld.gov.au/about-us/calendar/future-dates",
+   "label": {
+    "en": "Queensland Department of Education — Future term dates 2027 to 2029"
+   }
+  },
+  "vic-terms": {
+   "url": "https://www.vic.gov.au/school-term-dates-and-holidays-victoria",
+   "label": {
+    "en": "Victorian Government — School term dates and holidays"
+   }
+  },
+  "wa-terms": {
+   "url": "https://www.education.wa.edu.au/future-term-dates",
+   "label": {
+    "en": "WA Department of Education — Term dates 2026 to 2029"
+   }
+  },
+  "wa-edu-copyright": {
+   "url": "https://www.education.wa.edu.au/copyright",
+   "label": {
+    "en": "WA Department of Education — Copyright (CC BY 4.0)"
+   }
+  },
+  "tas-terms": {
+   "url": "https://www.decyp.tas.gov.au/about-us/term-dates/",
+   "label": {
+    "en": "Tasmanian Department for Education, Children and Young People — School terms and holidays"
+   }
+  },
+  "act-terms": {
+   "url": "https://www.education.act.gov.au/public-school-life/term-dates-and-public-holidays",
+   "label": {
+    "en": "ACT Education Directorate — Term dates and public holidays"
+   }
+  },
+  "nt-terms": {
+   "url": "https://education.nt.gov.au/education/term-dates",
+   "label": {
+    "en": "NT Department of Education — Term dates"
+   }
+  }
+ }
+}

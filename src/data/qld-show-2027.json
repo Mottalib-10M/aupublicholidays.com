@@ -1,0 +1,487 @@
+[
+ {
+  "date": "2027-01-29",
+  "district": "Southern Downs region—the area of the former Stanthorpe Shire and the area of the village of Dalveen",
+  "event": "Stanthorpe Annual Show"
+ },
+ {
+  "date": "2027-02-05",
+  "district": "Southern Downs region—the area of the former Warwick Shire—Division 1",
+  "event": "Allora Annual Show"
+ },
+ {
+  "date": "2027-02-19",
+  "district": "Southern Downs region—the area of the former Warwick Shire—Division 3 (excluding the urban area of Warwick City and the locality of Murray's Bridge)",
+  "event": "Killarney Annual Show"
+ },
+ {
+  "date": "2027-03-12",
+  "district": "Goondiwindi region—that area covered by the former Shire of Inglewood excluding that part of the former shire within the boundaries of the Parishes of Wyemo, Beebo, Texas, Silverspur, Arcot, Gunyan, Bonshaw, Maiden Head, Aitkin's Flat and the town of Texas",
+  "event": "Inglewood Annual Show"
+ },
+ {
+  "date": "2027-03-12",
+  "district": "Western Downs region—Miles and District",
+  "event": "Miles and District Show"
+ },
+ {
+  "date": "2027-03-19",
+  "district": "Southern Downs region—the area of the former Warwick Shire—Divisions 2, 5 and 6, Division 3 (being the urban area of Warwick City and the locality of Murray's Bridge), Division 4 (excluding the village of Dalveen)",
+  "event": "Warwick Annual Show"
+ },
+ {
+  "date": "2027-04-02",
+  "district": "Western Downs region—Wandoan and District",
+  "event": "Wandoan Annual Show"
+ },
+ {
+  "date": "2027-04-09",
+  "district": "Western Downs region—Dalby and District",
+  "event": "Dalby and District Annual Show"
+ },
+ {
+  "date": "2027-04-16",
+  "district": "Toowoomba region—Toowoomba Regional Council area excluding the Yarraman, Upper Yarraman and Cooyar areas",
+  "event": "Toowoomba Royal Agricultural Show"
+ },
+ {
+  "date": "2027-04-30",
+  "district": "Goondiwindi region—for that area covered by the former Goondiwindi Town Council Area and the former Waggamba Shire",
+  "event": "Goondiwindi Annual Show"
+ },
+ {
+  "date": "2027-05-04",
+  "district": "Shire of Banana—that part of the shire formerly known as Division 1 of Taroom Shire (includes township of Taroom)",
+  "event": "Taroom Annual Show"
+ },
+ {
+  "date": "2027-05-07",
+  "district": "Maranoa region—from the eastern boundary of the Council area including the towns of Jackson, Yuleba, Wallumbilla, Roma, Hodgson and Muckadilla. North of Roma to the northern boundary of the Council area including the town of Injune and the area known as Bymount and south of Roma to the southern boundary of the Council area including the township of Surat and the area East and South of Surat Township",
+  "event": "Roma Agricultural Show"
+ },
+ {
+  "date": "2027-05-07",
+  "district": "North Burnett region—Mundubbera Area",
+  "event": "Mundubbera Annual Show"
+ },
+ {
+  "date": "2027-05-11",
+  "district": "Maranoa region—west of Amby to the western boundary of the Council area including the towns of Mitchell and Mungallala. South of Amby to the southern boundary of the Council area including the area known as Dunkeld and north of Amby to the northern boundary of the Council area",
+  "event": "Mitchell Agricultural Show"
+ },
+ {
+  "date": "2027-05-11",
+  "district": "Shire of Banana—that part of the Shire covered by the Parishes of Mayne, Quakit, Gibber Gunyah, Martin, Highworth, Southend, Coteeda, Blackman, Cracow, Dresden, Mungungal, Camboon, Okangal, Walloon, Woolton, Woolthorpe, Warnoah, Belmont, Colombo, Tarramba, Barfield, Rhydding, Roundstone, Capayan, and that part of the Parish of Banana described as L110/FN261, L109/FN261, L48/FN283, L53/FN423, L1&2/RP892597, L1/RP612740, L1–6/RP613366, L2/RP612740, L127/FN470, and Pt L13/FN469",
+  "event": "(includes townships of Theodore and Cracow)"
+ },
+ {
+  "date": "2027-05-14",
+  "district": "City of Ipswich",
+  "event": "Ipswich Annual Show"
+ },
+ {
+  "date": "2027-05-14",
+  "district": "Gympie region excluding Goomeri Township, Parish of Goomeribong",
+  "event": "Gympie Annual Show"
+ },
+ {
+  "date": "2027-05-14",
+  "district": "Shire of Banana—that part of the shire covering the Parishes of Annandale, Craiglands, Dumgree, Earlsfield, Greycliffe, Spier, Thalberg, Callide, Prairie, Coreen, Kooingal, Scoria, Kroombit, Clifford, Kariboe, Grevillea, Prospect, Tiamby, Moura and Kianga (includes townships/areas of Biloela, Jambin, Goovigen, Thangool, Banana, Moura, Prospect Creek, Mt Murchison)",
+  "event": "Callide Valley Agricultural and Pastoral Show"
+ },
+ {
+  "date": "2027-05-14",
+  "district": "Shire of Murweh",
+  "event": "Charleville and District Annual Show"
+ },
+ {
+  "date": "2027-05-19",
+  "district": "Barcaldine region—Alpha townships",
+  "event": "Alpha Annual Show"
+ },
+ {
+  "date": "2027-05-21",
+  "district": "Central Highlands region—Capella and Tieri",
+  "event": "Capella and District Agricultural Show"
+ },
+ {
+  "date": "2027-05-21",
+  "district": "Fraser Coast region",
+  "event": "Fraser Coast Agricultural Show"
+ },
+ {
+  "date": "2027-05-21",
+  "district": "Longreach region—Longreach, Ilfracombe, Isisford and Yaraka",
+  "event": "Longreach Agricultural Show"
+ },
+ {
+  "date": "2027-05-21",
+  "district": "Shire of Barcoo",
+  "event": "Longreach Agricultural Show"
+ },
+ {
+  "date": "2027-05-21",
+  "district": "Western Downs region—Chinchilla and District",
+  "event": "Chinchilla Annual Show"
+ },
+ {
+  "date": "2027-05-26",
+  "district": "Isaac region—Moranbah, Clermont, Middlemount, Dysart, Kilcummin and rural areas",
+  "event": "Clermont Show Day"
+ },
+ {
+  "date": "2027-05-27",
+  "district": "Bundaberg region—within the postcodes of 4660, 4670 and 4673",
+  "event": "Bundaberg Annual Show"
+ },
+ {
+  "date": "2027-05-28",
+  "district": "Central Highlands region—Townships of Springsure, Rolleston and Bauhinia",
+  "event": "Springsure and District Agricultural Show"
+ },
+ {
+  "date": "2027-05-28",
+  "district": "Shire of Flinders—Hughenden, Stamford, Prairie and Torrens Creek",
+  "event": "Hughenden Show"
+ },
+ {
+  "date": "2027-05-28",
+  "district": "Sunshine Coast region—the area of the former Caloundra City Council",
+  "event": "Maleny Annual Show"
+ },
+ {
+  "date": "2027-06-02",
+  "district": "Central Highlands region—Townships of Emerald, Comet, Gemfields, Blackwater, Bluff, Dingo and Duaringa",
+  "event": "Emerald and District Agricultural Show"
+ },
+ {
+  "date": "2027-06-04",
+  "district": "Shire of Bulloo",
+  "event": "Hungerford Field Day"
+ },
+ {
+  "date": "2027-06-07",
+  "district": "Weipa Town Area",
+  "event": "Weipa Fishing Classic"
+ },
+ {
+  "date": "2027-06-10",
+  "district": "Isaac region—St Lawrence, south of Clairview and rural areas",
+  "event": "Rockhampton Agricultural Show"
+ },
+ {
+  "date": "2027-06-10",
+  "district": "Rockhampton region",
+  "event": "Rockhampton Agricultural Show"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Banana—that part of the shire covering the Parishes of Westwood, Fleetwood, Moongan, Dundee, Bunerba, Ulogie, Manton, Don and Bundalba (includes townships of Wowan and Dululu)",
+  "event": "Rockhampton Agricultural Show"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Banana—that part of the shire covering the Parishes of Thuriba, Olinda, Rannes, Benleith, Granville, Woolein, Fairview, Cottenham, Wright, Perch, Neimen and the Parish of Banana excluding L110/FN261, L109/FN261, L48/FN283, L53/FN423, L1&2/RP892597, L1/RP612740, L1-6/RP613366, L2/RP612740, L127/FN470, and Pt L13/FN469 (includes township of Baralaba)",
+  "event": "Rockhampton Agricultural Show"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Carpentaria",
+  "event": "Normanton Show Day"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Cloncurry",
+  "event": "Cloncurry and District Annual Show"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Livingstone",
+  "event": "Rockhampton Agricultural Show"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Richmond",
+  "event": "Richmond Annual Field Day"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Shire of Woorabinda",
+  "event": "Rockhampton Agricultural Show"
+ },
+ {
+  "date": "2027-06-11",
+  "district": "Sunshine Coast region—the area of the former Maroochy Shire",
+  "event": "Sunshine Coast Agricultural Show"
+ },
+ {
+  "date": "2027-06-17",
+  "district": "Isaac region—Nebo, Glenden, Coppabella, coastal region, Clairview and Clairview North",
+  "event": "Mackay Agricultural Show"
+ },
+ {
+  "date": "2027-06-17",
+  "district": "Mackay region",
+  "event": "Mackay Agricultural Show"
+ },
+ {
+  "date": "2027-06-18",
+  "district": "City of Mount Isa",
+  "event": "Mount Isa Agricultural Show"
+ },
+ {
+  "date": "2027-06-18",
+  "district": "Shire of Mornington",
+  "event": "Mount Isa Agricultural Show"
+ },
+ {
+  "date": "2027-06-18",
+  "district": "Whitsunday region—Proserpine, Airlie Beach and Cannonvale Districts",
+  "event": "Whitsunday Show"
+ },
+ {
+  "date": "2027-06-22",
+  "district": "Whitsunday region—Bowen district including the localities of Bowen, Guthalungra, Gumlu, and Bogie (excluding the area south of the Bogie River from its confluence with the Burdekin River to its source and then easterly by the Clark Range to the eastern boundary of the Council area)",
+  "event": "Bowen Annual Show"
+ },
+ {
+  "date": "2027-06-23",
+  "district": "Shire of Burdekin",
+  "event": "Burdekin Annual Show"
+ },
+ {
+  "date": "2027-06-25",
+  "district": "Shire of Cook",
+  "event": "Laura Rodeo, Campdraft and Races Weekend"
+ },
+ {
+  "date": "2027-06-25",
+  "district": "Shire of Hinchinbrook",
+  "event": "Ingham Annual Show"
+ },
+ {
+  "date": "2027-06-29",
+  "district": "Mareeba Shire—that part of the Mareeba Shire included within the Parishes of Irvinebank, Myosotis and Western",
+  "event": "Atherton Annual Show"
+ },
+ {
+  "date": "2027-06-29",
+  "district": "Tablelands region",
+  "event": "Atherton Annual Show"
+ },
+ {
+  "date": "2027-07-05",
+  "district": "City of Townsville",
+  "event": "Townsville Annual Show"
+ },
+ {
+  "date": "2027-07-05",
+  "district": "Shire of Palm Island",
+  "event": "Townsville Annual Show"
+ },
+ {
+  "date": "2027-07-09",
+  "district": "Cassowary Coast region—Divisions 4, 5 and 6 and those parts of Divisions 2 and 3 generally north of the Walter Hill Range",
+  "event": "Innisfail and District Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Cairns region",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Mareeba Shire excluding the Parishes of Irvinebank, Myosotis, Western, Mowbray, Salisbury, Riflemead and that part of the Parish of Garioch located north of Hunter and Rifle Creeks",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Aurukun",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Hope Vale",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Kowanyama",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Mapoon",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Napranum",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Pormpuraaw",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-16",
+  "district": "Shire of Yarrabah",
+  "event": "Cairns Annual Show"
+ },
+ {
+  "date": "2027-07-19",
+  "district": "Mareeba Shire—that part of Mareeba Shire included within the Parishes of Mowbray, Salisbury, Riflemead and that part of the Parish of Garioch located north of Hunter and Rifle Creeks",
+  "event": "Mossman Annual Show"
+ },
+ {
+  "date": "2027-07-19",
+  "district": "Shire of Douglas",
+  "event": "Mossman Annual Show"
+ },
+ {
+  "date": "2027-07-19",
+  "district": "Shire of Wujal Wujal",
+  "event": "Mossman Annual Show"
+ },
+ {
+  "date": "2027-07-23",
+  "district": "Cassowary Coast region—Division 1 and those parts of Divisions 2 and 3 generally south of the Walter Hill Range",
+  "event": "Tully and District Annual Show"
+ },
+ {
+  "date": "2027-07-27",
+  "district": "Charters Towers region",
+  "event": "Charters Towers Annual Show"
+ },
+ {
+  "date": "2027-08-06",
+  "district": "Shire of Etheridge",
+  "event": "Etheridge Shire Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Bundaberg region—within the postcode of 4671",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "City of Moreton Bay",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "City of Redland",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Gladstone region",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Goondiwindi region—for that area covered by the former Shire of Inglewood within the boundaries of the Parishes of Wyemo, Beebo, Texas, Silverspur, Arcot, Gunyan, Bonshaw, Maiden Head, Aitkin's Flat and the town of Texas",
+  "event": "Texas Show Holiday"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Gympie region—Goomeri Township, Parish of Goomeribong",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Lockyer Valley region",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Logan City",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "North Burnett region—Biggenden, Eidsvold, Gayndah, Monto and Mount Perry Areas",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Scenic Rim region",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Shire of Balonne",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Shire of Cherbourg",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Somerset region",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "South Burnett region",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Toowoomba region—that part of the Toowoomba Regional Council area comprising Yarraman, Upper Yarraman and Cooyar areas",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-09",
+  "district": "Western Downs region—Tara and District",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-11",
+  "district": "City of Brisbane",
+  "event": "Royal Queensland Show"
+ },
+ {
+  "date": "2027-08-13",
+  "district": "Shire of Paroo",
+  "event": "Cunnamulla and District Show"
+ },
+ {
+  "date": "2027-08-27",
+  "district": "City of Gold Coast",
+  "event": "Gold Coast Show"
+ },
+ {
+  "date": "2027-09-03",
+  "district": "Barcaldine region—Barcaldine, Jericho and Aramac townships",
+  "event": "Westech Field Day"
+ },
+ {
+  "date": "2027-09-10",
+  "district": "Shire of Noosa",
+  "event": "Noosa Show"
+ },
+ {
+  "date": "2027-09-10",
+  "district": "Shire of Quilpie",
+  "event": "Annual Quilpie and District Show"
+ },
+ {
+  "date": "2027-09-17",
+  "district": "Shire of Torres",
+  "event": "Torres Shire Council Show"
+ },
+ {
+  "date": "2027-09-17",
+  "district": "Torres Strait Island region (whole region except Cairns)",
+  "event": "Torres Strait Islands Show Day"
+ },
+ {
+  "date": "2027-11-02",
+  "district": "Whitsunday region—Collinsville district including area south of Bogie River from its confluence with the Burdekin River to its source and then easterly by the Clark Range to the eastern boundary of the Council area",
+  "event": "Collinsville Annual Show"
+ }
+]

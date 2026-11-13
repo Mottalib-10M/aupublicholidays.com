@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title={`Legal notice of ${SITE_NAMES[lang]}: publisher, host and terms`} description="Publisher and host of the Australian public holiday planner, why the dates are not a government gazette, intellectual property, licences of the state data used and the law that applies." lang={lang} noindex={true} breadcrumbs={[{ label: 'Legal notice' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none prose-headings:font-serif">
+    <h1>Legal notice and terms of use</h1>
+    <p>Information given under Article 6 III-1 of French law no. 2004-575 of 21 June 2004, the publisher being established in France.</p>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <p>Publication director: {AUTHOR_NAME}, responsible for the content of {SITE_URL}.</p>
+    <h2>Host</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>Not a government website</h2>
+    <p>{SITE_NAMES[lang]} is independent. It is not run by, endorsed by or connected with any Australian state, territory or Commonwealth government, the Fair Work Ombudsman, an education department or a union. Public holidays are declared by each state and territory under its own Act, and a minister can add, move or cancel a day by notice in the government gazette at any time; the gazette is the text that counts. Whether you work on a public holiday and what you are paid depends on the National Employment Standards and your award or agreement. Method and limits: <a href={route('method', lang)}>method page</a>.</p>
+    <h2>Liability</h2><p>Every date is read on a government page or worked out from the Act, and the engine is tested before each release, but errors cannot be ruled out and governments change dates. The publisher is not liable for a booking or roster decided on this site alone. Please report errors through the <a href={route('contact', lang)}>contact page</a>.</p>
+    <h2>Intellectual property</h2><p>Texts, design and code belong to the publisher; short quotations with a link are welcome. Dates from the NSW, Queensland and Victorian governments and from the WA Department of Education are used under the Creative Commons Attribution 4.0 licence (CC BY 4.0), with the source named on each page. Acts quoted remain the work of their parliaments.</p>
+    <h2>Embedding</h2><p>The countdown to the next public holiday may be embedded free of charge with its credit link visible: see the <a href={route('widget', lang)}>embed page</a>.</p>
+    {/* gen-legal-pages:terms */}
+    <h2>Personal data and cookies</h2>
+    {GA4_ID ? (<p>What you type in the tools stays in your browser. The site sets Google Analytics audience measurement cookies (<code>_ga</code>, <code>_ga_{GA4_ID.replace('G-', '')}</code>, 13 months at most), with no advertising{CLARITY_ID && '; page stability is monitored with Microsoft Clarity, cookie-free'}. Details, legal basis and how to object: <a href={route('privacy', lang)}>privacy policy</a> and <a href={route('cookies', lang)}>cookies</a> page.</p>) : (<p>What you type in the tools stays in your browser and the site sets no cookies{CLARITY_ID && '; page stability is monitored anonymously with Microsoft Clarity, cookie-free'}. See the <a href={route('privacy', lang)}>privacy policy</a> and the <a href={route('cookies', lang)}>cookies</a> page.</p>)}
+    {/* /gen-legal-pages:terms */}
+    <h2>Reporting unlawful content</h2><p>Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with the address of the page.</p>
+    <h2>Governing law</h2><p>French law applies; failing an amicable settlement, the courts of {LEGAL.jurisdiction} have jurisdiction, without prejudice to the protections an Australian consumer has under Australian law. Updated: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>
