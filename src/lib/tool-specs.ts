@@ -12,7 +12,7 @@ import type { ToolSpec, ToolOut, Input, V, OutTable } from './tool-types';
 import { resolve } from './tool-types';
 import { formatNumber, formatDecimal } from './format';
 import type { Lang } from './format';
-import { STATES, STATE_NAME, STATE_SHORT, YEARS, HOL_NAME, holidays, basis, sourceOf, daysOff, weekdayCount, type State, type Hol } from './engine/holidays';
+import { STATES, STATE_NAME, STATE_SHORT, YEARS, HOL_NAME, holidays, basis, sourceOf, daysOff, weekdayCount, dateOf, type State, type Hol } from './engine/holidays';
 import { easterSunday, gaussSteps, addDays, wdOf } from './engine/days';
 import { longWeekends, plan, workingDays, weekdaysInYear } from './engine/leave';
 import { terms, breaks, weeksOf, QLD_SHOW_2027, NSW_LOCAL_2027, tasRegional } from './engine/terms';
@@ -137,11 +137,14 @@ function lvSpec(_l: Lang, arg?: Args): ToolSpec {
     run: (v) => {
       const s = st(v), y = yr(v);
       if (!basis(s, y)) return notYet(s, y);
-      const asked = Math.max(0, Math.round(Number(v.leave))), p = plan(s, y, asked), l = p.longest;
+      // Testeurs naïfs du 2026-11-14, tour 2 : on a holiday page (`arg.near`), the plan stays around that holiday.
+      const near = arg?.near ? String(arg.near) : undefined, nn = near ? HOL_NAME[near] : '';
+      if (near && !dateOf(s, near, y)) return { label: `${nn} ${y}, ${STATE_SHORT[s]}`, value: 'Not a holiday here', sub: `${nn} is not a public holiday in ${STATE_NAME[s]}: pick another state.`, rows: [] };
+      const asked = Math.max(0, Math.round(Number(v.leave))), p = plan(s, y, asked, near), l = p.longest;
       // Testeurs naïfs du 2026-11-14 : the total is spread over several breaks, so it is never called « in a row »;
       // the longest break is shown by itself, and leave the plan does not need is said in words.
       return {
-        label: `Best use of ${days(asked)} of leave, ${STATE_SHORT[s]} ${y}`, value: `${N(p.off)} days off${p.blocks.length > 1 ? ' in total' : ''}`,
+        label: `Best use of ${days(asked)} of leave${near ? ` around ${nn}` : ''}, ${STATE_SHORT[s]} ${y}`, value: `${N(p.off)} days off${p.blocks.length > 1 ? ' in total' : ''}`,
         sub: !l ? 'Add leave days to see a plan' : p.blocks.length === 1 ? `In a row: ${span(l.offFrom, l.offTo)}` : `Across ${N(p.blocks.length)} breaks. Longest: ${days(l.off)} in a row, ${span(l.offFrom, l.offTo)}`,
         rows: [['Leave days used', `${N(p.leave)} of ${N(asked)}`], ['Breaks', N(p.blocks.length)], ...(p.leave ? [['Days off per leave day', formatDecimal(p.off / p.leave, 1)] as [string, string]] : [])],
         table: p.blocks.length ? { caption: 'Where to take the leave, break by break', headers: ['Take leave', 'Leave days', 'Days off in a row', 'Holidays used'], rows: p.blocks.map((b) => [span(b.leaveFrom, b.leaveTo), N(b.leave), `${N(b.off)} (${span(b.offFrom, b.offTo)})`, b.holidays.join(', ') || '–']), align: ['l', 'r', 'l', 'l'] } : undefined,

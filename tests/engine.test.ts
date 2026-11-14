@@ -154,3 +154,42 @@ describe('leave plan: totals, longest break, year end', () => {
     expect(m.alert).toContain('No weekday off in Victoria');
   });
 });
+
+// Testeurs naïfs du 2026-11-14, tour 2 : « Stretch Easter with annual leave » answered with the Christmas break
+// (the mini took the best break of the year, not the holiday of the page). Every leave mini whose title names a
+// holiday is now tied to it (`near`), and its break must contain that holiday.
+import { GUIDES } from '../src/lib/pages';
+import { helpers } from '../src/lib/helpers';
+import { NEAR } from '../src/lib/mini-specs';
+import { dateOf } from '../src/lib/engine/holidays';
+describe('holiday-page leave minis stay around their holiday', () => {
+  const minis = GUIDES.flatMap((g) => [...g.en.body(helpers('en')).matchAll(/<!--mini:leave\|([A-Za-z0-9+/=]+)-->/g)]
+    .map((m) => ({ id: g.id, ...(JSON.parse(Buffer.from(m[1], 'base64').toString('utf8')) as { t: string; d: Record<string, number> }) })));
+  it('finds the leave minis', () => { expect(minis.length).toBeGreaterThan(5); });
+  it('a title naming a holiday sets `near` to that holiday', () => {
+    for (const m of minis) for (const [i, [, name]] of NEAR.entries()) {
+      if (!i) continue;
+      const named = m.t.includes(name) || (name === 'Melbourne Cup Day' && m.t.includes('Cup Day'));
+      if (named) expect([m.id, m.d.near]).toEqual([m.id, i]);
+    }
+  });
+  it('the break shown contains the holiday', () => {
+    for (const m of minis.filter((x) => x.d.near)) {
+      const out = getSpec('leave').run(m.d), hol = dateOf(STATES[m.d.st], NEAR[m.d.near][0], 2027)!.date;
+      const l = plan(STATES[m.d.st], 2027, m.d.leave, NEAR[m.d.near][0]).longest!;
+      expect([m.id, l.offFrom <= hol && hol <= l.offTo]).toEqual([m.id, true]);
+      expect(out.head[0]).toContain(`${NEAR[m.d.near][1]} break`);
+    }
+  });
+  it('Easter: mini, page text and planner agree on NSW (Mon 22 – Thu 25 Mar, 10 days)', () => {
+    const e = plan('nsw', 2027, 4, 'goodfri').longest!;
+    expect([e.leaveFrom, e.leaveTo, e.off]).toEqual(['2027-03-22', '2027-03-25', 10]);
+    expect(plan('nsw', 2027, 5).blocks.some((b) => b.leaveFrom === e.leaveFrom && b.off === e.off)).toBe(true);
+  });
+  it('the Melbourne Cup tool stays on Cup Day, and says so outside Victoria', () => {
+    const t = runTool('lv', 'en', { state: 'vic', leave: 1, year: 2027, near: 'cup' });
+    expect(t.label).toContain('around Melbourne Cup Day');
+    expect(t.table!.rows[0][3]).toContain('Melbourne Cup');
+    expect(runTool('lv', 'en', { state: 'nsw', leave: 1, year: 2027, near: 'cup' }).value).toBe('Not a holiday here');
+  });
+});

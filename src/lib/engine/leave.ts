@@ -9,12 +9,14 @@
  * - `plan`: the best use of a budget of leave days, by dynamic programming over the work blocks: most days off in
  *   total, summed over the breaks (each break is one run of days off in a row and contains a weekday holiday); on a
  *   tie, fewer leave days. Exact. `longest` is the longest of these breaks: never call the total « in a row ».
+ *   `near` (a holiday id): only leave within two weeks of that holiday counts, for the minis of a holiday page
+ *   (testeurs naïfs du 2026-11-14, tour 2 : « Stretch Easter » answered with the Christmas break, the best of the year).
  * Only years whose holidays are known count their holidays. December of the year before and January of the year
  * after are always cut into blocks, with Saturdays and Sundays only when that year's holidays are unknown (testeurs
  * naïfs du 2026-11-14 : sans 2028 publié, NSW et VIC perdaient le pont de Noël et donnaient 6 jours pour 3 jours de
  * congé contre 10 en QLD ; avec les seuls week-ends, la pause va du samedi 25 décembre au dimanche 2 janvier).
  */
-import { holidays, offSet, basis, type State } from './holidays';
+import { holidays, offSet, basis, dateOf, type State } from './holidays';
 import { fromIso, toIso, isWeekend, dayNum } from './days';
 
 interface Block { free: boolean; start: number; len: number; hol: boolean }
@@ -68,14 +70,17 @@ export function bridges(st: State, y: number, max = 4): Bridge[] {
 }
 
 export interface Plan { blocks: Bridge[]; leave: number; off: number; spare: number; longest?: Bridge }
-/** Best split of `budget` leave days in year y (only days in year y cost leave). */
-export function plan(st: State, y: number, budget: number): Plan {
+/** Best split of `budget` leave days in year y (only days in year y cost leave), around holiday `near` if given. */
+export function plan(st: State, y: number, budget: number, near?: string): Plan {
   const B = Math.max(0, Math.min(60, Math.floor(budget)));
-  if (!basis(st, y)) return { blocks: [], leave: 0, off: 0, spare: B };
+  const nd = near ? dateOf(st, near, y) : undefined;
+  if (!basis(st, y) || (near && !nd)) return { blocks: [], leave: 0, off: 0, spare: B };
+  // shortcut: a ±14-day window, not « the break contains this holiday »; enough while no other weekday holiday sits that close.
+  const w = nd ? fromIso(nd.date) : 0, inWin = (b: Block) => !nd || (b.start >= w - 14 && b.start + b.len - 1 <= w + 14);
   const bl = blocks(st, y);
   const runs: number[] = []; for (let i = 0; i < bl.length; i++) if (!bl[i].free) runs.push(i);
   const n = runs.length, NEG = -1e9;
-  const ok = (r: number) => { const i = runs[r]; return i > 0 && i < bl.length - 1 && inYear(bl[i].start, bl[i].len, y) && bl[i].len <= 10; };
+  const ok = (r: number) => { const i = runs[r]; return i > 0 && i < bl.length - 1 && inYear(bl[i].start, bl[i].len, y) && bl[i].len <= 10 && inWin(bl[i]); };
   const fr = (i: number) => (bl[i] && bl[i].free ? bl[i].len : 0);
   const hol = (i: number) => !!(bl[i] && bl[i].free && bl[i].hol);
   const dp: Float64Array[][] = [], from: Int32Array[][] = [];

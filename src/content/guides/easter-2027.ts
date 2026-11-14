@@ -2,6 +2,9 @@ import { defineGuide } from '../../lib/page-types';
 import { K, D, DW, DM, N, F } from '../_k';
 import { STATES, STATE_SHORT } from '../../lib/engine/holidays';
 const e = K.easterSunday(2027), g = K.gaussSteps(2027);
+// Testeurs naïfs du 2026-11-14, tour 2 : the Easter mini answered with Christmas; the text now reads the same plan as the mini.
+const pe = K.plan('nsw', 2027, 4, 'goodfri'), be = pe.longest!, after = K.addDays(F('nsw', 'eastermon'), 1), afterEnd = K.addDays(F('nsw', 'eastermon'), 6);
+if (pe.blocks.length !== 1 || be.offTo !== F('nsw', 'eastermon') || K.addDays(F('nsw', 'goodfri'), be.off - 1) !== afterEnd) throw new Error('Easter plan changed: rewrite the Easter text');
 const noSat = STATES.filter((s) => !(K.holidays(s, 2027) ?? []).some((h) => h.id === 'eastersat'));
 const inTerm = STATES.filter((s) => { const t = K.terms(s, 2027); return t && t[0].end >= F(s, 'eastermon'); });
 const inBreak = STATES.filter((s) => { const t = K.terms(s, 2027); return t && t[0].end < F(s, 'goodfri'); });
@@ -26,9 +29,9 @@ export default defineGuide({
     body: (h) => `
 <h2>Easter 2027 public holidays in each state</h2>
 <p>The table in the tool shows which of the four Easter days each state treats as a public holiday. Two differences stand out. Western Australia and Tasmania leave Easter Saturday as an ordinary day, and Tasmania now joins the other states on Easter Sunday after its Act was amended in 2026. For most people working Monday to Friday, the result is the same everywhere: Friday ${h.day(F('nsw', 'goodfri'))} and Monday ${h.day(F('nsw', 'eastermon'))} off.</p>
-${h.mini('leave', { t: 'Stretch Easter with annual leave', d: { st: 0, leave: 4 }, e: 'Example for NSW with 4 leave days' })}
+${h.mini('leave', { t: 'Stretch Easter with annual leave', d: { st: 0, leave: 4, near: 1 }, e: 'Example for NSW with 4 leave days' })}
 <h2>Turning Easter into a longer break</h2>
-<p>Four days of leave from ${h.wday(K.addDays(F('nsw', 'eastermon'), 1))} to ${h.wday(K.addDays(F('nsw', 'eastermon'), 4))} give ten days off in a row, from Good Friday to the following Sunday. In NSW, WA, Queensland, the ACT and the Northern Territory, Anzac Day comes four weeks later with a Monday off, a second short break. The ${h.a('annual-leave-planner-2027', 'annual leave planner')} works out the best combination for your state.</p>
+<p>In NSW, four days of leave from ${h.wday(be.leaveFrom)} to ${h.wday(be.leaveTo)} give ${N(be.off)} days off in a row, from ${h.wday(be.offFrom)} to Easter Monday: this is the break the tool above shows. The week after Easter works just as well: leave from ${h.wday(after)} to ${h.wday(K.addDays(after, 3))} also gives ${N(be.off)} days off, from Good Friday to ${h.wday(afterEnd)}. In NSW, WA, Queensland, the ACT and the Northern Territory, Anzac Day comes four weeks later with a Monday off, a second short break. The ${h.a('annual-leave-planner-2027', 'annual leave planner')} works out the best combination for your state.</p>
 <h2>Why Easter 2027 is early</h2>
 <p>By Gauss's formula, the Paschal full moon of 2027 is on day ${g.OG} counted from 1 March, and the next Sunday comes ${g.OE} days later. In 2028 Easter falls on ${h.day(K.easterSunday(2028))}, so it slides back to mid-April and lines up with the April school holidays in most states. State lists such as those of ${h.src('nsw-ph', 'NSW')} and ${h.src('qld-ph', 'Queensland')} confirm the 2027 dates.</p>`,
   },

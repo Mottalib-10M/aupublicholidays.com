@@ -1,9 +1,9 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, PLAN } from '../_k';
+import { K, D, DW, DM, N, F } from '../_k';
 const cup = F('vic', 'cup'), c26 = F('vic', 'cup', 2026), c28 = K.nthWeekday(2028, 11, 2, 1), gfn = F('vic', 'grandfinal'), t = K.terms('vic', 2027)!;
-const p1 = PLAN('vic', 1);
+const p1 = K.plan('vic', 2027, 1, 'cup');
 export default defineGuide({
-  id: 'melbourne-cup-2027', group: 'days', order: 14, tool: 'lv', toolArg: { state: 'vic', leave: 1, year: 2027 },
+  id: 'melbourne-cup-2027', group: 'days', order: 14, tool: 'lv', toolArg: { state: 'vic', leave: 1, year: 2027, near: 'cup' },
   related: ['vic-public-holidays-2027', 'annual-leave-planner-2027', 'long-weekends-2027', 'next-public-holiday'],
   sources: ['mcv-2027', 'mcv-2026', 'vic-business-2027', 'vic-copyright'],
   en: {
@@ -20,8 +20,8 @@ export default defineGuide({
     ],
     body: (h) => `
 <h2>Melbourne Cup 2027 and the four-day weekend</h2>
-<p>The planner above is set for Victoria with one day of leave. Its best use in 2027 gives ${N(p1.off)} days off. Cup week falls in term 4, which runs from ${h.day(t[3].start)} to ${h.day(t[3].end)}, so Victorian schools close on the Tuesday but are open on the Monday.</p>
-${h.mini('leave', { t: 'Add more leave around Cup Day', d: { st: 1, leave: 2 }, e: 'Example for Victoria with 2 leave days' })}
+<p>The planner above is set for Victoria with one day of leave around Cup Day. Its best use gives ${N(p1.off)} days off. Cup week falls in term 4, which runs from ${h.day(t[3].start)} to ${h.day(t[3].end)}, so Victorian schools close on the Tuesday but are open on the Monday.</p>
+${h.mini('leave', { t: 'Add more leave around Cup Day', d: { st: 1, leave: 4, near: 3 }, e: 'Example for Victoria with 4 leave days' })}
 <h2>Spring public holidays in Victoria</h2>
 <p>The Cup is Victoria's second spring holiday. The first is the Friday before the AFL Grand Final, shown in the ${h.src('mcv-2027', 'court calendar')} as ${h.day(gfn)} and still to be confirmed. After Cup Day the next Victorian public holiday is Christmas. The full list is on ${h.a('vic-public-holidays-2027', 'VIC public holidays 2027')}, and the ${h.src('vic-business-2027', 'Business Victoria page')} is where the government confirms the dates.</p>`,
   },

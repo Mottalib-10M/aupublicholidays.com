@@ -8,7 +8,7 @@
  */
 import type { MiniSpec, MiniInput } from './mini-types';
 import { formatNumber } from './format';
-import { STATES, STATE_NAME, STATE_SHORT, YEARS, basis, HOL_NAME } from './engine/holidays';
+import { STATES, STATE_NAME, STATE_SHORT, YEARS, basis, HOL_NAME, dateOf } from './engine/holidays';
 import { plan, longWeekends } from './engine/leave';
 import { terms, weeksOf } from './engine/terms';
 import { ACROSS, keptOn } from './tool-specs';
@@ -18,19 +18,24 @@ import { wdOf } from './engine/days';
 const N = (x: number) => formatNumber(x, 0);
 const stateIn = (def = 0, list = STATES): MiniInput => ({ id: 'st', label: 'State or territory', def, options: list.map((s, i) => ({ value: String(i), label: STATE_NAME[s] })) });
 const TERM_STATES = STATES.filter((s) => terms(s, 2027));
+/** Holiday of the page for the `leave` mini (`near`, hidden): 0 = whole year. Easter is found by Good Friday. */
+export const NEAR: Array<[string, string]> = [['', ''], ['goodfri', 'Easter'], ['australia', 'Australia Day'], ['cup', 'Melbourne Cup Day']];
 
 export function getSpec(kind: string, _lang = 'en'): MiniSpec {
   switch (kind) {
     case 'leave': return {
       title: 'How many days off does your leave buy in 2027?', cta: 'Open the annual leave planner',
       exemple: (v) => `Example for ${STATE_SHORT[STATES[v.st]]} with ${N(v.leave)} leave days`,
-      inputs: [stateIn(0), { id: 'leave', label: 'Leave days', def: 5, unit: 'days', max: 40 }],
+      inputs: [stateIn(0), { id: 'leave', label: 'Leave days', def: 5, unit: 'days', max: 40 },
+        { id: 'near', label: 'Around', def: 0, options: NEAR.map(([, n], i) => ({ value: String(i), label: n || 'Whole year' })), showIf: () => false }],
       run: (v) => {
         // Testeurs naïfs du 2026-11-14 : « days off in a row » sat on a total of two breaks, next to the « first »
         // break (4 days); the head now says « in total » when there are several breaks, and the longest is shown.
-        const s = STATES[v.st], asked = Math.round(v.leave), p = plan(s, 2027, asked), l = p.longest, many = p.blocks.length > 1;
+        const s = STATES[v.st], asked = Math.round(v.leave), [nid, nname] = NEAR[v.near ?? 0] ?? NEAR[0];
+        const p = plan(s, 2027, asked, nid || undefined), l = p.longest, many = p.blocks.length > 1;
+        if (nid && !dateOf(s, nid, 2027)) return { head: [`${nname} 2027, ${STATE_SHORT[s]}`, 'Not a holiday'], rows: [], note: `${nname} is not a public holiday in ${STATE_NAME[s]}: pick another state.` };
         return {
-          head: [`${STATE_SHORT[s]} 2027: days off ${many ? 'in total' : 'in a row'}`, days(p.off)],
+          head: [`${STATE_SHORT[s]} 2027${nid ? `, ${nname} break` : ''}: days off ${many ? 'in total' : 'in a row'}`, days(p.off)],
           rows: [['Leave days used', `${N(p.leave)} of ${N(asked)}`], ...(many ? [['Breaks', N(p.blocks.length)] as [string, string]] : []), ...(l ? [[many ? 'Longest break' : 'Your break', `${days(l.off)}, ${span(l.offFrom, l.offTo)}`] as [string, string], [many ? 'Leave for that break' : 'Take leave on', span(l.leaveFrom, l.leaveTo)] as [string, string]] : [])],
           note: p.spare > 0 && p.leave > 0 ? `Only ${N(p.leave)} of your ${N(asked)} days are needed here; a day left over on any Friday or Monday still gives a three-day weekend.` : undefined,
         };

@@ -28,6 +28,6 @@ ${h.table(['State', 'Long weekends', 'Four days or more'], STATES.map((s) => [ST
 <p>The tool above lists each state's long weekends with dates. Where they differ, the cause is always a state holiday: Labour Day falls in March in WA, Victoria and Tasmania, in May in Queensland and the NT, and in October in NSW, South Australia and the ACT. Anzac Day gives a Monday in five states and territories but not in Victoria, South Australia or Tasmania.</p>
 ${h.mini('lw', { t: 'Long weekends in another state or year', d: { st: 3, y: 1 }, e: 'Showing WA in 2027' })}
 <h2>From long weekend to a real break</h2>
-<p>A long weekend is the cheapest base for a holiday, because one or two leave days next to it double its length. Easter is the clearest case: four leave days after Easter Monday give ten days off. The ${h.a('annual-leave-planner-2027', 'annual leave planner')} finds the best combination for any number of leave days in your state.</p>`,
+<p>A long weekend is the cheapest base for a holiday, because one or two leave days next to it double its length. Easter is the clearest case: four leave days in the week before Good Friday, or in the week after Easter Monday, give ten days off. The ${h.a('annual-leave-planner-2027', 'annual leave planner')} finds the best combination for any number of leave days in your state.</p>`,
   },
 });
