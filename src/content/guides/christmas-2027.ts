@@ -1,10 +1,12 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, PLAN } from '../_k';
+import { K, D, DW, DM, N, PLAN, PLAN_TXT } from '../_k';
 import { STATES, STATE_SHORT } from '../../lib/engine/holidays';
 const sh = (l: string[]) => l.map((s) => STATE_SHORT[s as keyof typeof STATE_SHORT]).join(', ');
 const eve = STATES.filter((s) => (K.holidays(s, 2027) ?? []).some((h) => h.id === 'xmaseve'));
 const nye = STATES.filter((s) => (K.holidays(s, 2027) ?? []).some((h) => h.id === 'nye'));
 const p3 = PLAN('nsw', 3);
+// The sentence below says the best three leave days of the NSW year are the Christmas ones: stop the build if not.
+if (p3.blocks.length !== 1 || p3.longest?.leaveFrom !== '2027-12-29') throw new Error('christmas-2027: the best 3-day NSW plan is no longer the Christmas break');
 export default defineGuide({
   id: 'christmas-2027', group: 'days', order: 16, tool: 'hd', toolArg: { hol: 'christmas', state: 'nsw', year: 2027 },
   related: ['long-weekends-2027', 'annual-leave-planner-2027', 'sa-public-holidays-2027', 'public-holidays-2028'],
@@ -23,11 +25,11 @@ export default defineGuide({
     ],
     body: (h) => `
 <h2>Christmas 2027 public holidays in each state</h2>
-<p>The tool lists the Christmas Day dates in each state. The ${h.src('nsw-ph', 'NSW')}, ${h.src('qld-ph', 'Queensland')} and ${h.src('wa-ph', 'WA')} lists add Monday 27 December for Christmas and Tuesday 28 December for Boxing Day; ${h.src('sa-ph', 'South Australia')} does the same for Proclamation Day. The ${h.src('mcv-2027', 'Victorian court calendar')} marks the same two days. ${h.src('tas-act', 'Tasmania')} adds the Monday and moves Boxing Day to the Tuesday, and the ${h.src('act-act', 'ACT')} and ${h.src('nt-act', 'NT')} Acts give both weekdays.</p>
-${h.mini('day', { t: 'Christmas days off in your state', d: { h: 7, st: 5 }, e: 'Example: Christmas Day in Tasmania' })}
+<p>The tool lists the Christmas Day dates in each state. The ${h.src('nsw-ph', 'NSW')}, ${h.src('qld-ph', 'Queensland')} and ${h.src('wa-ph', 'WA')} lists add Monday 27 December for Christmas and Tuesday 28 December for Boxing Day; ${h.src('sa-ph', 'South Australia')} does the same, under another name: there, 26 December is called Proclamation Day. The ${h.src('mcv-2027', 'Victorian court calendar')} marks the same two days. ${h.src('tas-act', 'Tasmania')} adds the Monday and moves Boxing Day to the Tuesday, and the ${h.src('act-act', 'ACT')} and ${h.src('nt-act', 'NT')} Acts give both weekdays.</p>
+${h.mini('day', { t: 'Christmas days off in your state', d: { h: 7, st: 5 }, e: 'Showing Christmas Day in Tasmania' })}
 <h2>The evenings of Christmas Eve and New Year's Eve</h2>
 <p>Queensland makes Christmas Eve a public holiday from 6pm to midnight; South Australia and the Northern Territory do it from 7pm, and do the same on New Year's Eve. These part-day holidays change pay for evening shifts under many awards, but they are not days off, and this site never counts them in long weekends or leave plans.</p>
 <h2>Leave between Christmas and New Year</h2>
-<p>Between the additional days and New Year's Day, only ${h.wday('2027-12-29')}, Thursday 30 and Friday 31 December are working days. Three days of leave there join Christmas to the New Year weekend. Across the whole year, the best use of three leave days in NSW gives ${N(p3.off)} days off; the ${h.a('annual-leave-planner-2027', 'annual leave planner')} shows where for your state.</p>`,
+<p>Between the additional days and New Year's Day, only ${h.wday('2027-12-29')}, Thursday 30 and Friday 31 December are working days. Three days of leave there join Christmas to the New Year weekend: in NSW they give ${PLAN_TXT(p3)}, the best use of three leave days in the whole year. That count stops at Sunday 2 January, because NSW has not yet published its 2028 list; the ${h.a('annual-leave-planner-2027', 'annual leave planner')} shows where for your state.</p>`,
   },
 });

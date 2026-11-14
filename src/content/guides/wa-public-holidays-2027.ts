@@ -1,5 +1,5 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN } from '../_k';
+import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN, PLAN_TXT } from '../_k';
 const S = 'wa', lw = LW(S), t = K.terms(S, 2027)!, p2 = PLAN(S, 2);
 export default defineGuide({
   id: 'wa-public-holidays-2027', group: 'states', order: 4, tool: 'st', toolArg: { state: S, year: 2027 },
@@ -23,7 +23,7 @@ export default defineGuide({
 <p>Western Australia starts its holidays early: Labour Day is the first Monday of March, ${h.wday(F(S, 'labour'))}, a week before Victoria and Tasmania. Easter follows on ${h.day(F(S, 'goodfri'))}, then Anzac Day, a Sunday, with Monday ${h.day(SUB(S, 'anzac')[0])} added. June brings WA Day on ${h.wday(F(S, 'waday'))}, and the King's Birthday closes the season on ${h.wday(F(S, 'kings'))}, in the school holidays between term 3 and term 4.</p>
 ${h.mini('leave', { t: 'Two leave days in WA, best placed', d: { st: 3, leave: 2 }, e: 'Example for WA with 2 leave days' })}
 <h2>Long weekends in Western Australia</h2>
-<p>WA has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Two days of leave placed well give ${N(p2.off)} days off. The ${h.a('long-weekends-2027', 'long weekends page')} lists them next to the other states.</p>
+<p>WA has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Two days of leave placed well give ${PLAN_TXT(p2)}. The ${h.a('long-weekends-2027', 'long weekends page')} lists them next to the other states.</p>
 <h2>What changes in 2028</h2>
 <p>The ${h.src('wa-ph', 'WA Government page')} already shows 2028 with Easter Saturday as a public holiday and a new Show Day, to be set by proclamation for the first Monday of the September and October school holidays. The ${h.a('public-holidays-2028', 'public holidays 2028')} page has the dates as published. The WA Government's page terms do not allow commercial reproduction, so we give the dates as facts with a link; term dates come from the ${h.src('wa-terms', 'Department of Education')}, licensed under ${h.src('wa-edu-copyright', 'CC BY 4.0')}.</p>`,
   },

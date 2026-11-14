@@ -20,7 +20,7 @@ export default defineGuide({
     body: (h) => `
 <h2>Labour Day 2027 dates side by side</h2>
 <p>The tool gives the Labour Day date in each state. In order through the year: ${h.src('wa-ph', 'Western Australia')} on ${h.day(L.wa)}, ${h.src('mcv-2027', 'Victoria')} and ${h.src('tas-act', 'Tasmania')} on ${h.day(L.vic)}, ${h.src('qld-ph', 'Queensland')} and the ${h.src('nt-act', 'Northern Territory')} on ${h.day(L.qld)}, then ${h.src('nsw-ph', 'NSW')}, ${h.src('sa-ph', 'South Australia')} and the ${h.src('act-act', 'ACT')} on ${h.day(L.nsw)}.</p>
-${h.mini('day', { t: 'Labour Day in your state', d: { h: 5, st: 3 }, e: 'Example: Labour Day in WA' })}
+${h.mini('day', { t: 'Labour Day in your state', d: { h: 5, st: 3 }, e: 'Showing Labour Day in WA' })}
 <h2>A March, May or October long weekend</h2>
 <p>For a Victorian, Labour Day is the first long weekend after Australia Day, and Easter comes less than three weeks later. For a Queenslander, the May Labour Day follows Anzac Day by one week, so two Monday holidays sit in a row. In NSW the October Labour Day is the last public holiday before Christmas. See every long weekend on ${h.a('long-weekends-2027', 'long weekends 2027')}.</p>`,
   },

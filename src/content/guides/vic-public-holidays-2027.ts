@@ -1,5 +1,5 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN } from '../_k';
+import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN, PLAN_TXT } from '../_k';
 const S = 'vic', lw = LW(S), cup = F(S, 'cup'), gfn = F(S, 'grandfinal'), t = K.terms(S, 2027)!, p4 = PLAN(S, 4);
 export default defineGuide({
   id: 'vic-public-holidays-2027', group: 'states', order: 2, tool: 'st', toolArg: { state: S, year: 2027 },
@@ -24,8 +24,8 @@ export default defineGuide({
 <p>Spring holds the two days found nowhere else. The Friday before the AFL Grand Final has been a public holiday since 2015 and is shown here as ${h.day(gfn)}, the date the court calendar prints with a note that it is still to be confirmed. Melbourne Cup Day follows on ${h.wday(cup)}; a day of leave on ${h.wday('2027-11-01')} turns it into four days off.</p>
 ${h.mini('leave', { t: 'Plan Victorian leave around Cup Day and Easter', d: { st: 1, leave: 4 }, e: 'Example for Victoria with 4 leave days' })}
 <h2>Long weekends in Victoria</h2>
-<p>Victoria has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Four days of leave placed well give ${N(p4.off)} days off in a row. The full comparison is on the ${h.a('long-weekends-2027', 'long weekends 2027')} page and Cup week has its own page, ${h.a('melbourne-cup-2027', 'Melbourne Cup 2027')}.</p>
+<p>Victoria has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Four days of leave placed well give ${PLAN_TXT(p4)}. The full comparison is on the ${h.a('long-weekends-2027', 'long weekends 2027')} page and Cup week has its own page, ${h.a('melbourne-cup-2027', 'Melbourne Cup 2027')}.</p>
 <h2>Where the Victorian dates come from</h2>
-<p>The Business Victoria page that lists public holidays refused automated reading, so the dates here come from the ${h.src('mcv-2027', '2027 calendar of the Magistrates’ Court of Victoria')}, which marks each public holiday. The ${h.src('vic-business-2027', 'Business Victoria 2027 page')} stays the reference to check, especially for the Grand Final eve. Victoria’s government material is licensed under ${h.src('vic-copyright', 'CC BY 4.0')}.</p>`,
+<p>The Business Victoria page that lists public holidays could not be checked directly, so the dates here come from the ${h.src('mcv-2027', '2027 calendar of the Magistrates’ Court of Victoria')}, which marks each public holiday. The ${h.src('vic-business-2027', 'Business Victoria 2027 page')} stays the reference to check, especially for the Grand Final eve. Victoria’s government material is licensed under ${h.src('vic-copyright', 'CC BY 4.0')}.</p>`,
   },
 });

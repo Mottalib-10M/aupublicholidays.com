@@ -1,5 +1,5 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN } from '../_k';
+import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN, PLAN_TXT } from '../_k';
 const S = 'nsw', lw = LW(S), p3 = PLAN(S, 3), loc = K.NSW_LOCAL_2027, t1 = K.terms(S, 2027)!;
 export default defineGuide({
   id: 'nsw-public-holidays-2027', group: 'states', order: 1, tool: 'st', toolArg: { state: S, year: 2027 },
@@ -24,7 +24,7 @@ export default defineGuide({
 <p>Easter is early in 2027 and falls in term 1: schools are open from ${h.day(t1[0].start)} to ${h.day(t1[0].end)}, so the term holidays start almost two weeks after Easter Monday. The April holidays then contain the Anzac Day weekend instead.</p>
 ${h.mini('leave', { t: 'How far does your NSW leave go in 2027?', d: { st: 0, leave: 3 }, e: 'Example for NSW with 3 leave days' })}
 <h2>Long weekends in New South Wales</h2>
-<p>NSW gets ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Three days of leave placed where they go furthest give ${N(p3.off)} days off. The ${h.a('long-weekends-2027', 'long weekends page')} compares NSW with the other states.</p>
+<p>NSW gets ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Three days of leave placed where they go furthest give ${PLAN_TXT(p3)}. The ${h.a('long-weekends-2027', 'long weekends page')} compares NSW with the other states.</p>
 <h2>What sits outside the statewide list</h2>
 <p>Local holidays come on top. The ${h.a('nsw-local-public-holidays-2027', 'NSW local public holidays 2027')} page lists the ${N(loc.length)} show and race days of 2027, from the ${loc[0].event} on ${h.day(loc[0].date)} to the ${loc[loc.length - 1].event} on ${h.day(loc[loc.length - 1].date)}. They apply only in the named area. Whether you work on any public holiday, and at what rate, is set by the ${h.src('fairwork-ph', 'National Employment Standards')} and your award.</p>`,
   },

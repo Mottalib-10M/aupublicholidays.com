@@ -1,5 +1,5 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN } from '../_k';
+import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN, PLAN_TXT } from '../_k';
 const S = 'sa', lw = LW(S), t = K.terms(S, 2027)!, p3 = PLAN(S, 3);
 export default defineGuide({
   id: 'sa-public-holidays-2027', group: 'states', order: 5, tool: 'st', toolArg: { state: S, year: 2027 },
@@ -21,9 +21,9 @@ export default defineGuide({
 <h2>SA public holidays 2027 in order</h2>
 <p>South Australia's list comes from ${h.src('sa-ph', 'SafeWork SA')}, the state's workplace regulator. Its year starts with New Year's Day on a Friday, then Australia Day on a ${h.wd(F(S, 'australia'))}. March brings Adelaide Cup Day on ${h.wday(F(S, 'adelaidecup'))}, and Easter follows from ${h.day(F(S, 'goodfri'))}. The Adelaide Cup long weekend and Easter fall in term 1, which runs from ${h.day(t[0].start)} to ${h.day(t[0].end)}.</p>
 <p>Anzac Day stays on the Sunday in 2027 with no extra day. The second half of the year has the King's Birthday on ${h.wday(F(S, 'kings'))} and Labour Day on ${h.wday(F(S, 'labour'))}, in the school holidays just before term 4.</p>
-${h.mini('lw', { t: 'Long weekends in South Australia', d: { st: 4, y: 1 }, e: 'Example for SA in 2027' })}
+${h.mini('lw', { t: 'Long weekends in South Australia', d: { st: 4, y: 1 }, e: 'Showing SA in 2027' })}
 <h2>Long weekends in South Australia</h2>
-<p>There are ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Three days of leave placed well give ${N(p3.off)} days off in a row; the ${h.a('annual-leave-planner-2027', 'annual leave planner')} works this out for any number of days.</p>
+<p>There are ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Three days of leave placed well give ${PLAN_TXT(p3)}; the ${h.a('annual-leave-planner-2027', 'annual leave planner')} works this out for any number of days.</p>
 <h2>Christmas 2027 in South Australia</h2>
 <p>The Christmas period runs from Christmas Eve, a part-day holiday from 7pm on ${h.wday('2027-12-24')}, to Tuesday 28 December, the additional day for Proclamation Day. New Year's Eve, ${h.wday('2027-12-31')}, is again a part-day holiday from 7pm. See ${h.a('christmas-2027', 'Christmas 2027')} for the other states.</p>`,
   },

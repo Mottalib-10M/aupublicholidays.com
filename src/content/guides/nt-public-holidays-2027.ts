@@ -1,5 +1,5 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN } from '../_k';
+import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN, PLAN_TXT } from '../_k';
 const S = 'nt', lw = LW(S), p4 = PLAN(S, 4);
 export default defineGuide({
   id: 'nt-public-holidays-2027', group: 'states', order: 8, tool: 'st', toolArg: { state: S, year: 2027 },
@@ -19,11 +19,11 @@ export default defineGuide({
     ],
     body: (h) => `
 <h2>NT public holidays 2027 through the dry season</h2>
-<p>The Territory's calendar is spread more evenly than most. After Easter, ${h.day(F(S, 'goodfri'))} to ${h.day(F(S, 'eastermon'))}, comes Anzac Day observed on ${h.wday(F(S, 'anzac'))}, then May Day a week later on ${h.wday(F(S, 'mayday'))}. The King's Birthday on ${h.wday(F(S, 'kings'))} and Picnic Day on ${h.wday(F(S, 'picnic'))} carry the dry season, the months when most Territorians travel.</p>
-${h.mini('lw', { t: 'Long weekends in the Territory', d: { st: 7, y: 1 }, e: 'Example for the NT in 2027' })}
+<p>The Territory's calendar is spread more evenly than most. After Easter, ${h.day(F(S, 'goodfri'))} to ${h.day(F(S, 'eastermon'))}, comes Anzac Day, moved to ${h.wday(F(S, 'anzac'))}, then May Day a week later on ${h.wday(F(S, 'mayday'))}. The King's Birthday on ${h.wday(F(S, 'kings'))} and Picnic Day on ${h.wday(F(S, 'picnic'))} carry the dry season, the months when most Territorians travel.</p>
+${h.mini('lw', { t: 'Long weekends in the Territory', d: { st: 7, y: 1 }, e: 'Showing the NT in 2027' })}
 <h2>Long weekends in the Northern Territory</h2>
-<p>The NT has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. With four days of leave placed well you get ${N(p4.off)} days off in a row. The Anzac and May Day weekends sit a week apart, so four leave days between them join them into one break of ${N(K.daysBetween('2027-04-24', '2027-05-03') + 1)} days.</p>
+<p>The NT has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. With four days of leave placed well you get ${PLAN_TXT(p4)}. The Anzac and May Day weekends sit a week apart, so four leave days between them join them into one break of ${N(K.daysBetween('2027-04-24', '2027-05-03') + 1)} days.</p>
 <h2>Evening holidays and how the dates were found</h2>
-<p>Christmas Eve, ${h.wday('2027-12-24')}, and New Year's Eve, ${h.wday('2027-12-31')}, are public holidays from 7pm to midnight under Schedule 2 of the ${h.src('nt-act', 'Public Holidays Act 1981')}. The ${h.src('nt-ph', 'NT Government page')} refused automated reading, so all dates are worked out from that Act, version in force at 1 June 2023. A holiday added by notice after that date would not appear here.</p>`,
+<p>Christmas Eve, ${h.wday('2027-12-24')}, and New Year's Eve, ${h.wday('2027-12-31')}, are public holidays from 7pm to midnight under the ${h.src('nt-act', 'Public Holidays Act 1981')}. The ${h.src('nt-ph', 'NT Government page')} could not be checked directly, so all dates are worked out from that Act, version in force at 1 June 2023. A holiday added by notice after that date would not appear here.</p>`,
   },
 });

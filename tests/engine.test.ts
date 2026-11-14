@@ -114,3 +114,43 @@ describe('Clock helpers and sources', () => {
   });
   it('every source has a url', () => { for (const s of Object.values(P.sources)) expect(s.url.startsWith('https://')).toBe(true); });
 });
+
+// Testeurs naïfs du 2026-11-14 : « 14 days off in a row » was a total over two breaks; NSW lost its Christmas
+// bridge (6 days for 3 leave days, against 10 in Queensland) because 2028 was unknown.
+import { getSpec } from '../src/lib/mini-specs';
+import { runTool } from '../src/lib/tool-specs';
+describe('leave plan: totals, longest break, year end', () => {
+  it('the total is the sum of the breaks and the longest break is named', () => {
+    const p = plan('nsw', 2027, 5);
+    expect(p.blocks.length).toBe(2);
+    expect(p.off).toBe(p.blocks.reduce((a, b) => a + b.off, 0));
+    expect(p.longest!.off).toBe(Math.max(...p.blocks.map((b) => b.off)));
+    expect(p.longest!.off).toBeLessThan(p.off);
+  });
+  it('NSW and Victoria keep the Christmas bridge with 2028 unpublished (weekends only)', () => {
+    for (const s of ['nsw', 'vic'] as const) {
+      expect(basis(s, 2028)).toBeNull();
+      const p = plan(s, 2027, 3);
+      const xmas = p.blocks.find((b) => b.leaveFrom === '2027-12-29');
+      if (s === 'nsw') { expect(xmas).toBeDefined(); expect(xmas!.offFrom).toBe('2027-12-25'); expect(xmas!.offTo).toBe('2028-01-02'); expect(xmas!.off).toBe(9); }
+    }
+  });
+  it('no text says « in a row » for a total of several breaks', () => {
+    const m = getSpec('leave').run({ st: 0, leave: 5 });
+    expect(m.head[0]).toContain('in total');
+    expect(m.rows.find((r) => r[0] === 'Longest break')![1]).toContain('10 days');
+    const t = runTool('lv', 'en', { state: 'nsw', leave: 5, year: 2027 });
+    expect(t.value).toBe('14 days off in total');
+    const one = getSpec('leave').run({ st: 0, leave: 1 });
+    expect(one.head[0]).toContain('in a row');
+  });
+  it('says when leave is left over (ACT, 5 days → 4 used)', () => {
+    const m = getSpec('leave').run({ st: 6, leave: 5 });
+    expect(m.rows[0][1]).toBe('4 of 5');
+    expect(m.note).toContain('Only 4 of your 5 days');
+  });
+  it('the Anzac Day mini says « no weekday off » in Victoria', () => {
+    const m = getSpec('day').run({ h: 4, st: 1 });
+    expect(m.alert).toContain('No weekday off in Victoria');
+  });
+});

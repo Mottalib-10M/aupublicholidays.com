@@ -6,9 +6,13 @@
  * free blocks on either side into one run of days off.
  * - `longWeekends`: free blocks of three days or more that contain a weekday public holiday.
  * - `bridges`: work blocks of at most `max` days next to a weekday holiday, best return first.
- * - `plan`: the best use of a budget of leave days, by dynamic programming over the work blocks: most days off in a
- *   row; on a tie, fewer leave days. Exact.
- * Only years whose holidays are known count; a block that touches an unknown year is left out.
+ * - `plan`: the best use of a budget of leave days, by dynamic programming over the work blocks: most days off in
+ *   total, summed over the breaks (each break is one run of days off in a row and contains a weekday holiday); on a
+ *   tie, fewer leave days. Exact. `longest` is the longest of these breaks: never call the total « in a row ».
+ * Only years whose holidays are known count their holidays. December of the year before and January of the year
+ * after are always cut into blocks, with Saturdays and Sundays only when that year's holidays are unknown (testeurs
+ * naïfs du 2026-11-14 : sans 2028 publié, NSW et VIC perdaient le pont de Noël et donnaient 6 jours pour 3 jours de
+ * congé contre 10 en QLD ; avec les seuls week-ends, la pause va du samedi 25 décembre au dimanche 2 janvier).
  */
 import { holidays, offSet, basis, type State } from './holidays';
 import { fromIso, toIso, isWeekend, dayNum } from './days';
@@ -18,7 +22,7 @@ const known = (st: State, y: number) => [y - 1, y, y + 1].filter((yy) => basis(s
 
 export function blocks(st: State, y: number): Block[] {
   const ys = known(st, y), hol = offSet(st, ys);
-  const a = ys.includes(y - 1) ? dayNum(y - 1, 12, 1) : dayNum(y, 1, 1), b = ys.includes(y + 1) ? dayNum(y + 1, 1, 31) : dayNum(y, 12, 31);
+  const a = dayNum(y - 1, 12, 1), b = dayNum(y + 1, 1, 31);
   const out: Block[] = [];
   for (let d = a; d <= b; d++) {
     const h = hol.has(d), free = h || isWeekend(d), counts = h && !isWeekend(d);
@@ -63,7 +67,7 @@ export function bridges(st: State, y: number, max = 4): Bridge[] {
   return out.sort((a, b) => b.off / b.leave - a.off / a.leave || b.off - a.off || a.leaveFrom.localeCompare(b.leaveFrom));
 }
 
-export interface Plan { blocks: Bridge[]; leave: number; off: number; spare: number }
+export interface Plan { blocks: Bridge[]; leave: number; off: number; spare: number; longest?: Bridge }
 /** Best split of `budget` leave days in year y (only days in year y cost leave). */
 export function plan(st: State, y: number, budget: number): Plan {
   const B = Math.max(0, Math.min(60, Math.floor(budget)));
@@ -101,7 +105,8 @@ export function plan(st: State, y: number, budget: number): Plan {
     out.push(mkBridge(st, bl, runs[r], runs[e])); r = e;
   }
   const leave = out.reduce((a, b) => a + b.leave, 0);
-  return { blocks: out, leave, off: out.reduce((a, b) => a + b.off, 0), spare: B - leave };
+  const longest = out.reduce<Bridge | undefined>((m, b) => (!m || b.off > m.off ? b : m), undefined);
+  return { blocks: out, leave, off: out.reduce((a, b) => a + b.off, 0), spare: B - leave, longest };
 }
 
 /** Working days (Mon–Fri minus full-day public holidays) per month; null if the year is unknown. */

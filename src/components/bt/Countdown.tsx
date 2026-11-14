@@ -9,7 +9,7 @@ import SelectField from '../ui/SelectField';
 import { ResultCard, Rows, ShareRow } from '../calc/parts';
 import { readParams, updateURL } from '../../lib/url-state';
 import { STATES, STATE_NAME, STATE_SHORT, onDate, upcoming, type State } from '../../lib/engine/holidays';
-import { stateInstant, todayIn, daysBetween } from '../../lib/engine/days';
+import { stateInstant, todayIn } from '../../lib/engine/days';
 import { termStatus } from '../../lib/engine/terms';
 import { dWeek, dShort } from '../../lib/dates';
 import { t } from '../../i18n/ui';
@@ -46,7 +46,7 @@ export default function Countdown({ lang, state: s0, methodHref, idPrefix = 'c' 
         <form data-simulateur className="grid content-start grid-cols-1 gap-x-4 gap-y-3" onSubmit={(e) => e.preventDefault()}>
           <SelectField id={`${idPrefix}-state`} label="Your state or territory" value={state} onChange={(v) => { setState(v as State); setMoved(true); }} options={STATES.map((g) => ({ value: g, label: STATE_NAME[g] }))} />
           <div className="rounded-lg border border-accent-200 bg-accent-50 px-4 py-3" data-chrome>
-            <p className="text-sm font-medium text-navy-700">{next ? `Time left until ${next.name}` : 'No later date published yet'}</p>
+            <p className="text-sm font-medium text-navy-700">{next ? `Time left until ${next.name} ${next.date.slice(0, 4)}` : 'No later date published yet'}</p>
             {cd && <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1" aria-live="off">
               {[[cd[0], ui.days], [cd[1], ui.hours], [cd[2], ui.minutes], [cd[3], ui.seconds]].map(([v, u]) => <span key={String(u)} className="inline-flex items-baseline gap-1"><span className="tabular-nums text-2xl font-bold text-navy-900">{nf.format(Number(v))}</span><span className="text-sm text-navy-600">{u}</span></span>)}
             </p>}
@@ -55,8 +55,8 @@ export default function Countdown({ lang, state: s0, methodHref, idPrefix = 'c' 
         </form>
         <ResultCard label={`Is today a public holiday in ${STATE_SHORT[state]}?`} value={isHol ? `Yes: ${todays.find((h) => h.off)!.name}` : todays.length ? `Partly: ${todays[0].name}` : 'No'} sub={`Today in ${STATE_SHORT[state]}: ${dWeek(today)}`}>
           <Rows rows={[
-            ...(next ? [['Next public holiday', `${dShort(next.date)} (in ${nf.format(daysBetween(today, next.date))} days)`] as [string, string]] : []),
-            ...list.slice(1, 4).map((h) => [h.name, dShort(h.date)] as [string, string]),
+            ...(next ? [['Next public holiday', `${dShort(next.date)} ${next.date.slice(0, 4)}`] as [string, string]] : []),
+            ...list.slice(1, 4).map((h) => [h.name, `${dShort(h.date)} ${h.date.slice(0, 4)}`] as [string, string]),
             ...termRow,
           ]} />
           <ShareRow methodHref={methodHref} labels={ui} />

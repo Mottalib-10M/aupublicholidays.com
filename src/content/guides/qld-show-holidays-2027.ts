@@ -26,7 +26,7 @@ export default defineGuide({
 <h2>QLD show holidays 2027 month by month</h2>
 ${h.table(['Month', 'Show holidays'], [...new Set(dates.map((d) => d.slice(0, 7)))].map((m) => [MONTHS[Number(m.slice(5)) - 1], L.filter((x) => x.date.startsWith(m)).length]), 'Number of Queensland show holidays in each month of 2027', ['l', 'r'])}
 <p>The season runs from the summer shows of the Southern Downs, Stanthorpe first, to the last shows in ${MONTHS[Number(dates[dates.length - 1].slice(5, 7)) - 1]}. The list is the ${h.src('qld-show', 'Queensland Government 2027 show holiday list')}, used under ${h.src('qld-copyright', 'CC BY 4.0')}; we copy the district descriptions as written.</p>
-${h.mini('lw', { t: 'Statewide long weekends in Queensland', d: { st: 2, y: 1 }, e: 'Example for Queensland in 2027' })}
+${h.mini('lw', { t: 'Statewide long weekends in Queensland', d: { st: 2, y: 1 }, e: 'Showing Queensland in 2027' })}
 <h2>Show holidays and the statewide list</h2>
 <p>A show holiday adds to the ${h.a('qld-public-holidays-2027', 'QLD public holidays 2027')}; it never replaces one. With the Royal Queensland Show Monday on ${h.day(rqs[0].date)}, districts north of Brisbane get a long weekend in August, a month with no statewide holiday.</p>`,
   },

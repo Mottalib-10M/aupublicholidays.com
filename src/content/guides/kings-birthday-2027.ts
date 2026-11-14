@@ -23,7 +23,7 @@ export default defineGuide({
     body: (h) => `
 <h2>King's Birthday 2027 in each state and territory</h2>
 <p>The tool shows the date in each state. Six use the second Monday of June, a rule written in their Acts or published lists: ${h.src('nsw-ph', 'NSW')}, ${h.src('mcv-2027', 'Victoria')}, ${h.src('sa-ph', 'South Australia')}, ${h.src('tas-act', 'Tasmania')}, ${h.src('act-act', 'the ACT')} and ${h.src('nt-act', 'the Northern Territory')}. ${h.src('qld-ph', 'Queensland')} uses the first Monday of October and ${h.src('wa-ph', 'Western Australia')} a proclaimed day.</p>
-${h.mini('day', { t: "King's Birthday in your state", d: { h: 6, st: 2 }, e: "Example: King's Birthday in Queensland" })}
+${h.mini('day', { t: "King's Birthday in your state", d: { h: 6, st: 2 }, e: "Showing King's Birthday in Queensland" })}
 <h2>A long weekend in winter or spring</h2>
 <p>In the six June states the long weekend runs from ${h.day(K.addDays(k, -2))} to ${h.day(k)}. In the ACT it comes two weeks after Reconciliation Day, so Canberra gets two winter long weekends. Queensland's October date lines up with the end of the spring school holidays, while Western Australia's falls inside them. The ${h.a('long-weekends-2027', 'long weekends')} page puts them in order.</p>
 <h2>What changes in 2028</h2>

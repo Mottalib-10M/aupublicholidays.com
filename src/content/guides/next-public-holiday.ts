@@ -23,7 +23,7 @@ export default defineGuide({
 <h2>Next public holiday after ${h.day(R)}, state by state</h2>
 ${h.table(['State', 'Next holiday', 'Then'], nx.map((x) => [STATE_SHORT[x.s], x.h[0] ? `${x.h[0].name}, ${h.sd(x.h[0].date)}` : '–', x.h[1] ? `${x.h[1].name}, ${h.sd(x.h[1].date)}` : '–']), `The next public holidays as of ${h.day(R)}, when the lists were read`)}
 <p>This table is fixed at the date the lists were read; the countdown above moves with your clock. Christmas is the next stop everywhere, and in 2026 it falls on a Friday, so Boxing Day is a Saturday and most states add ${h.wday('2026-12-28')}. The ${h.a('public-holidays-2026', 'rest of 2026')} page has the details.</p>
-${h.mini('lw', { t: 'Long weekends after this one', d: { st: 0, y: 1 }, e: 'Example for NSW in 2027' })}
+${h.mini('lw', { t: 'Long weekends after this one', d: { st: 0, y: 1 }, e: 'Showing NSW in 2027' })}
 <h2>Embed or bookmark it</h2>
 <p>The countdown is also available for other websites on the ${h.a('widget', 'embed page')}. To plan further ahead, the ${h.a('long-weekends-2027', 'long weekends 2027')} page lists every break of the year.</p>`,
   },

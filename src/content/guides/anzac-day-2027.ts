@@ -26,7 +26,7 @@ export default defineGuide({
     body: (h) => `
 <h2>Anzac Day 2027 in each state</h2>
 <p>The tool lists the day or days off in each state and territory. The pattern follows each state's own law: the ${h.src('nsw-ph', 'NSW')} and ${h.src('wa-ph', 'WA')} lists add an additional Monday, Queensland's ${h.src('qld-act', 'Holidays Act')} moves the holiday to Monday, and the ${h.src('act-act', 'ACT Holidays Act')} and the ${h.src('nt-act', 'NT Public Holidays Act')} do the same. Victoria, South Australia and Tasmania leave the Sunday alone.</p>
-${h.mini('day', { t: 'Check Anzac Day in your state', d: { h: 4, st: 1 }, e: 'Example: Anzac Day in Victoria' })}
+${h.mini('day', { t: 'Check Anzac Day in your state', d: { h: 4, st: 1 }, e: 'Showing Anzac Day in Victoria' })}
 <h2>A long weekend in the April school holidays</h2>
 <p>Where the Monday is off, Anzac Day 2027 makes a three-day weekend from ${h.day('2027-04-24')}. In NSW and WA it falls in the school holidays between term 1 and term 2; in Queensland pupils are already back in class, since term 2 started on ${h.day(K.terms('qld', 2027)![1].start)}. The ${h.a('long-weekends-2027', 'long weekends 2027')} page lists all of them.</p>
 <h2>Anzac Day in 2026 and 2028</h2>

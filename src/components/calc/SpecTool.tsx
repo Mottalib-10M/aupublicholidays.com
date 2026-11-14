@@ -61,7 +61,7 @@ export default function SpecTool({ kind, lang, arg, methodHref, idPrefix = 't' }
           )}
         </form>
         <ResultCard label={out.label} value={out.value} sub={out.sub}>
-          <MentionExemple lang={lang} touched={touched} suppose={out.assume} modifiables={spec.inputs.length} className="mt-2" />
+          <MentionExemple lang={lang} touched={touched} suppose={out.assume} aide={out.assumeHelp} modifiables={spec.inputs.length} className="mt-2" />
           <Rows rows={out.rows} />
           {out.note && <p className="mt-2 text-xs text-navy-600">{out.note}</p>}
           <ShareRow methodHref={methodHref} labels={ui} />

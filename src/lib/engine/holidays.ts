@@ -37,7 +37,7 @@ export function label(id: string, flag: Flag | undefined, st: State): string {
   const n = HOL_NAME[id] ?? id;
   switch (flag) {
     case 'sub': return `${n} (additional day)`;
-    case 'obs': return `${n} (observed)`;
+    case 'obs': return `${n} (moved to this day)`;
     case 'part': return `${n}, ${PART_HOURS[st] ?? 'part-day'}`;
     case 'area': return id === 'ekka' ? `${n}, Brisbane area only` : `${n} (regional)`;
     case 'bank': return `${n} (banks only, not a public holiday)`;

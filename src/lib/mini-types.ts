@@ -19,6 +19,8 @@ export interface MiniSpec {
    *  (« Example for a 40-year-old with a £180,000 mortgage ») : remplace « Example with typical figures » dans la
    *  mention posée tant que rien n'est modifié. Fonction : reçoit les valeurs (celles de la page comprises). */
   exemple?: string | ((v: Record<string, number>) => string);
+  /** Remplace « change any figure to see your own result » (liste officielle montrée pour un choix, pas un exemple chiffré). */
+  exempleAide?: string;
   /** `touched` : les champs que le lecteur a modifiés (testeurs naïfs du 2026-11-08). Tant qu'il est vide,
    *  le composant pose la mention d'exemple ; une spec peut aussi s'en servir pour taire un verdict
    *  (« vous êtes éligible ») tant que les chiffres sont ceux de l'exemple. */

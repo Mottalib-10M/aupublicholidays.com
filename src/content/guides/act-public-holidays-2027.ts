@@ -1,6 +1,11 @@
 import { defineGuide } from '../../lib/page-types';
-import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN } from '../_k';
+import { K, D, DW, DM, N, F, SUB, COUNT, WEEKDAY, WORK, LW, PLAN, PLAN_TXT } from '../_k';
+import { STATES, STATE_NAME } from '../../lib/engine/holidays';
 const S = 'act', lw = LW(S), p5 = PLAN(S, 5);
+// Testeurs naïfs du 2026-11-14 : « more than any state » read as « more holidays »; the two claims are now separate and checked.
+const others = STATES.filter((s) => s !== S);
+const tiedMost = others.filter((s) => COUNT(s) === COUNT(S));
+if (COUNT(S) < Math.max(...others.map((s) => COUNT(s))) || LW(S).length <= Math.max(...others.map((s) => LW(s).length))) throw new Error('act: the « most » claims no longer hold');
 export default defineGuide({
   id: 'act-public-holidays-2027', group: 'states', order: 7, tool: 'st', toolArg: { state: S, year: 2027 },
   related: ['nsw-public-holidays-2027', 'long-weekends-2027', 'annual-leave-planner-2027', 'anzac-day-2027'],
@@ -10,7 +15,7 @@ export default defineGuide({
     title: 'ACT public holidays 2027: Canberra Day, Reconciliation Day',
     description: `ACT public holidays 2027 from the Holidays Act 1958: ${N(COUNT(S))} days in Canberra with the weekday, Canberra Day ${DM(F(S, 'canberra'))}, Reconciliation Day ${DM(F(S, 'reconciliation'))}, ${N(lw.length)} long weekends.`,
     h1: 'ACT public holidays 2027 in Canberra',
-    intro: `The Australian Capital Territory has ${N(COUNT(S))} public holidays in 2027 and ${N(lw.length)} long weekends, more than any state.`,
+    intro: `The Australian Capital Territory has ${N(COUNT(S))} public holidays in 2027, the most of any state${tiedMost.length ? ` (tied with ${tiedMost.map((s) => STATE_NAME[s]).join(' and ')})` : ''}, and ${N(lw.length)} long weekends, more than anywhere else.`,
     resume: `Applying the ACT Holidays Act 1958 to 2027 gives these public holidays: New Year's Day on ${DW('2027-01-01')}, Australia Day on ${DW(F(S, 'australia'))}, Canberra Day on ${DW(F(S, 'canberra'))}, the four days of Easter from ${D(F(S, 'goodfri'))} to ${D(F(S, 'eastermon'))}, Anzac Day kept on ${DW(F(S, 'anzac'))} because 25 April is a Sunday, Reconciliation Day on ${DW(F(S, 'reconciliation'))}, the King's Birthday on ${DW(F(S, 'kings'))}, Labour Day on ${DW(F(S, 'labour'))}, and Christmas Day and Boxing Day, with ${DW(SUB(S, 'christmas')[0])} and ${DW(SUB(S, 'boxing')[0])} added because both fall at the weekend. The Bank Holiday on ${D(F(S, 'bank'))} applies to banks only. Of these holidays ${N(WEEKDAY(S))} fall on a weekday, which leaves ${N(WORK(S))} working days in Canberra in 2027.`,
     faqs: [
       { q: 'When is Reconciliation Day 2027 in the ACT?', a: `Reconciliation Day is the first Monday on or after 27 May, so in 2027 it is ${DW(F(S, 'reconciliation'))}. It began in 2018 and is the only public holiday of its kind in Australia. With the King's Birthday two weeks later, Canberra gets two June-time long weekends.` },
@@ -23,8 +28,8 @@ export default defineGuide({
 <p>May and June are the richest months of any state or territory. Reconciliation Day on ${h.wday(F(S, 'reconciliation'))} and the King's Birthday on ${h.wday(F(S, 'kings'))} make two long weekends a fortnight apart. Labour Day comes in October, ${h.wday(F(S, 'labour'))}, on the same day as NSW and South Australia.</p>
 ${h.mini('leave', { t: 'Plan Canberra leave for 2027', d: { st: 6, leave: 5 }, e: 'Example for the ACT with 5 leave days' })}
 <h2>Long weekends in the ACT</h2>
-<p>The ACT has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Five days of leave placed well give ${N(p5.off)} days off. The ${h.a('annual-leave-planner-2027', 'annual leave planner')} shows the exact days.</p>
+<p>The ACT has ${N(lw.length)} long weekends in 2027: ${lw.map((x) => `${h.sd(x.from)} (${N(x.days)} days)`).join(', ')}. Five days of leave placed well give ${PLAN_TXT(p5)}. The ${h.a('annual-leave-planner-2027', 'annual leave planner')} shows the exact days.</p>
 <h2>How these dates were worked out</h2>
-<p>The ${h.src('act-cmtedd', 'ACT Government holidays page')} refused automated reading, so each date here comes from the ${h.src('act-act', 'Holidays Act 1958')}: fixed dates, Mondays counted from the calendar, and the rules for a holiday that falls at the weekend. A holiday the minister declares for one year only would not be in the Act; it appears on the government page and in the gazette. ACT school terms are not shown, as the education directorate page refused reading too.</p>`,
+<p>The ${h.src('act-cmtedd', 'ACT Government holidays page')} could not be checked directly, so each date here comes from the ${h.src('act-act', 'Holidays Act 1958')}: fixed dates, Mondays counted from the calendar, and the rules for a holiday that falls at the weekend. A holiday the minister declares for one year only would not be in the Act; it appears on the government page and in the gazette. ACT school terms are not shown yet: the education directorate's dates could not be checked directly.</p>`,
   },
 });

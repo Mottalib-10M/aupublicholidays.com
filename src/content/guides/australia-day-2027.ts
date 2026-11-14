@@ -21,7 +21,7 @@ export default defineGuide({
     ],
     body: (h) => `
 <h2>Australia Day 2027 in every state</h2>
-<p>The tool shows the same date in all eight columns: ${h.wday(a)}. Australia Day is in each state's Act or list; ${h.src('nsw-ph', 'NSW')}, ${h.src('qld-ph', 'Queensland')}, ${h.src('wa-ph', 'Western Australia')} and ${h.src('sa-ph', 'South Australia')} publish it, and the ${h.src('tas-act', 'Tasmanian')}, ${h.src('act-act', 'ACT')} and ${h.src('nt-act', 'NT')} Acts set it on 26 January, moved to Monday only when it falls at the weekend.</p>
+<p>The table under the tool shows the same date for all eight states and territories: ${h.wday(a)}. Australia Day is in each state's Act or list; ${h.src('nsw-ph', 'NSW')}, ${h.src('qld-ph', 'Queensland')}, ${h.src('wa-ph', 'Western Australia')} and ${h.src('sa-ph', 'South Australia')} publish it, and the ${h.src('tas-act', 'Tasmanian')}, ${h.src('act-act', 'ACT')} and ${h.src('nt-act', 'NT')} Acts set it on 26 January, moved to Monday only when it falls at the weekend.</p>
 ${h.mini('leave', { t: 'One leave day around Australia Day', d: { st: 0, leave: 1 }, e: 'Example for NSW with 1 leave day' })}
 <h2>The first long weekend of 2027</h2>
 <p>New Year's Day is a Friday, so the year opens with a three-day weekend. Australia Day then gives a second break if you take the Monday. With one day of leave, the planner finds ${N(PLAN('nsw', 1).off)} days off in NSW; the best single leave day of the year is on either side of a Tuesday or Thursday holiday, and 2027 has few of them. The ${h.a('long-weekends-2027', 'long weekends 2027')} page lists every break, state by state.</p>`,

@@ -20,8 +20,8 @@ export default defineGuide({
     body: (h) => `
 <h2>TAS regional holidays 2027 in date order</h2>
 ${h.table(['Date', 'Holiday'], L.map((x) => [h.wday(x.date), x.event]), 'Regional holidays 2027 under Schedule 1 of the Statutory Holidays Act 2000')}
-<p>Dates are worked out from the ${h.src('tas-act', 'Statutory Holidays Act 2000')}, Schedule 1, because the ${h.src('tas-worksafe', 'WorkSafe Tasmania page')} refused automated reading. Pick an area in the tool above for its full description.</p>
-${h.mini('lw', { t: 'Statewide long weekends in Tasmania', d: { st: 5, y: 1 }, e: 'Example for Tasmania in 2027' })}
+<p>Dates are worked out from the ${h.src('tas-act', 'Statutory Holidays Act 2000')} because the ${h.src('tas-worksafe', 'WorkSafe Tasmania page')} could not be checked directly. Pick an area in the tool above for its full description.</p>
+${h.mini('lw', { t: 'Statewide long weekends in Tasmania', d: { st: 5, y: 1 }, e: 'Showing Tasmania in 2027' })}
 <h2>Regatta or Recreation Day: one long weekend each</h2>
 <p>Both main regional holidays are Mondays, so each region gets one more long weekend than the ${h.a('tas-public-holidays-2027', 'TAS public holidays 2027')} list shows. The Regatta weekend is in February, before Eight Hours Day; Recreation Day in November is the last Monday holiday of the year in the north.</p>`,
   },

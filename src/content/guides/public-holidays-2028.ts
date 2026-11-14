@@ -23,7 +23,7 @@ export default defineGuide({
 <h2>Public holidays 2028 counts by state</h2>
 ${h.table(['State', 'Full-day public holidays', 'Long weekends', 'Basis'], STATES.map((s) => [STATE_SHORT[s], K.basis(s, Y) ? COUNT(s, Y) : 'Not yet published', K.basis(s, Y) ? LW(s, Y).length : '–', K.basis(s, Y) === 'list' ? 'Government list' : K.basis(s, Y) === 'act' ? 'Worked out from the Act' : '–']), 'Public holidays 2028 known on the date the sources were read')}
 <p>The tool shows Queensland by default; switch the state to see each list. The ${h.src('wa-ph', 'WA Government page')} is the one with the most changes, and the ${h.src('qld-ph', 'Queensland')} and ${h.src('sa-ph', 'South Australian')} lists follow their usual pattern.</p>
-${h.mini('lw', { t: 'Long weekends in 2028', d: { st: 2, y: 2 }, e: 'Example for Queensland in 2028' })}
+${h.mini('lw', { t: 'Long weekends in 2028', d: { st: 2, y: 2 }, e: 'Showing Queensland in 2028' })}
 <h2>Easter and Anzac Day 2028</h2>
 <p>Easter falls on ${h.day(K.easterSunday(Y))}, so Good Friday is ${h.day(F('qld', 'goodfri', Y))} and Easter Monday ${h.day(F('qld', 'eastermon', Y))}. Anzac Day follows eight days later on a ${h.wd('2028-04-25')}, which gives a short week. See ${h.a('easter-2027', 'Easter 2027')} for the year before.</p>`,
   },

@@ -1,0 +1,119 @@
+
+> aupublicholidays.com@0.1.0 check
+> npm run build && npx vitest run && node scripts/typo-nbsp.mjs dist --check && node scripts/check-legal.mjs && python3 scripts/check-seo.py . && python3 scripts/check-unique.py . && python3 scripts/check-trame.py . && python3 scripts/check-liens.py . && node scripts/check-layout.mjs . && node scripts/check-sources.mjs . && python3 scripts/check-simulateurs.py . && python3 scripts/check-hreflang.py . && python3 scripts/check-anglais.py . && python3 scripts/check-portefeuille.py . && python3 scripts/check-cookies.py . && node scripts/check-url-propre.mjs . && node scripts/check-premier-ecran.mjs . && node scripts/check-droits.mjs . && node scripts/check-copie.mjs . && node scripts/check-nombres.mjs . && node scripts/check-contraste.mjs . && node scripts/check-saisie.mjs . && python3 scripts/check-regles.py . && python3 scripts/check-motcle.py .
+
+
+> aupublicholidays.com@0.1.0 build
+> astro build && node scripts/typo-nbsp.mjs && python3 scripts/check-snippets.py dist
+
+18:12:09 [types] Generated 109ms
+18:12:09 [build] output: "static"
+18:12:09 [build] mode: "static"
+18:12:09 [build] directory: /Users/mottalib/Documents/GitHub/a-publier/Mottalib-10M/aupublicholidays.com/dist/
+18:12:09 [build] Collecting build info...
+18:12:09 [build] ✓ Completed in 126ms.
+18:12:09 [build] Building static entrypoints...
+18:12:10 [vite] ✓ built in 1.19s
+18:12:11 [vite] ✓ built in 592ms
+18:12:11 [build] Rearranging server assets...
+
+ generating static routes 
+18:12:11   ├─ /404.html (+11ms) 
+18:12:11   ├─ /embed/en/next-holiday/index.html (+15ms) 
+18:12:11   ├─ /en/about/index.html (+6ms) 
+18:12:11   ├─ /en/contact/index.html (+4ms) 
+18:12:11   ├─ /en/cookies/index.html (+4ms) 
+18:12:11   ├─ /en/editorial-policy/index.html (+3ms) 
+18:12:11   ├─ /en/legal-notice/index.html (+3ms) 
+18:12:11   ├─ /en/method/index.html (+5ms) 
+18:12:11   ├─ /en/privacy/index.html (+5ms) 
+18:12:11   ├─ /en/widget/index.html (+3ms) 
+18:12:11   ├─ /en/index.html (+26ms) 
+18:12:11   ├─ /en/nsw-public-holidays-2027/index.html (+7ms) 
+18:12:11   ├─ /en/vic-public-holidays-2027/index.html (+6ms) 
+18:12:11   ├─ /en/qld-public-holidays-2027/index.html (+6ms) 
+18:12:11   ├─ /en/wa-public-holidays-2027/index.html (+6ms) 
+18:12:11   ├─ /en/sa-public-holidays-2027/index.html (+5ms) 
+18:12:11   ├─ /en/tas-public-holidays-2027/index.html (+6ms) 
+18:12:11   ├─ /en/act-public-holidays-2027/index.html (+7ms) 
+18:12:11   ├─ /en/nt-public-holidays-2027/index.html (+6ms) 
+18:12:11   ├─ /en/easter-2027/index.html (+4ms) 
+18:12:11   ├─ /en/anzac-day-2027/index.html (+5ms) 
+18:12:11   ├─ /en/kings-birthday-2027/index.html (+4ms) 
+18:12:11   ├─ /en/labour-day-2027/index.html (+4ms) 
+18:12:11   ├─ /en/melbourne-cup-2027/index.html (+4ms) 
+18:12:11   ├─ /en/australia-day-2027/index.html (+4ms) 
+18:12:11   ├─ /en/christmas-2027/index.html (+4ms) 
+18:12:11   ├─ /en/long-weekends-2027/index.html (+9ms) 
+18:12:11   ├─ /en/annual-leave-planner-2027/index.html (+15ms) 
+18:12:11   ├─ /en/next-public-holiday/index.html (+5ms) 
+18:12:11   ├─ /en/public-holidays-2028/index.html (+7ms) 
+18:12:11   ├─ /en/public-holidays-2026/index.html (+4ms) 
+18:12:11   ├─ /en/school-terms-2027/index.html (+3ms) 
+18:12:11   ├─ /en/qld-show-holidays-2027/index.html (+4ms) 
+18:12:11   ├─ /en/nsw-local-public-holidays-2027/index.html (+3ms) 
+18:12:11   ├─ /en/tas-regional-holidays-2027/index.html (+3ms) 
+18:12:11   ├─ /llms.txt (+2ms) 
+18:12:11   ├─ /index.html (+5ms) 
+18:12:11 ✓ Completed in 296ms.
+
+18:12:11 [build] ✓ Completed in 2.12s.
+18:12:11 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+18:12:11 [build] 36 page(s) built in 2.28s
+18:12:11 [build] Complete!
+typo-nbsp: 0 espace(s) rendue(s) insécable(s) dans 25 page(s)
+typo-nbsp: 146 tiret(s) cadratin remplacé(s) par une virgule
+check-snippets : 27 pages indexables, titres 50-60, descriptions 150-160, ordre des mots et unicite conformes
+
+ RUN  v4.1.12 /Users/mottalib/Documents/GitHub/a-publier/Mottalib-10M/aupublicholidays.com
+
+
+ Test Files  3 passed (3)
+      Tests  63 passed (63)
+   Start at  18:12:12
+   Duration  615ms (transform 630ms, setup 0ms, import 856ms, tests 205ms, environment 0ms)
+
+typo-nbsp: 0 espace(s) à corriger dans 0 page(s)
+typo-nbsp: 0 décimale(s) avec un point dans une langue à virgule
+typo-nbsp: 0 pourcentage(s) écrit(s) mal placé(s) : « 20 % » là où la langue écrit « 20% », ou après le nombre en turc, qui écrit « %20 » (souvent dans un composant React : corriger la source)
+typo-nbsp: 0 mot(s) français sans accent ou avec un accent faux
+Identité légale complète, aucune mention provisoire.
+. : 27 pages indexables, 0 à corriger
+
+. : 27 pages comparées, 0 paire(s) trop proches, 0 question(s) recyclée(s)
+
+. : 35 pages, 0 à corriger, 0 question(s) de FAQ recyclée(s)
+. : 39 pages, 0 cible(s) morte(s), 0 lien(s) a corriger, 0 route(s) vide(s)
+check-layout: 27 pages × 4 largeurs, 0 défaut(s)
+check-sources: 34 source(s), 0 morte(s), 0 injoignable(s), 6 bloquée(s) aux robots
+  ? 403 https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027  (à vérifier à la main)
+  ? 403 https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays  (à vérifier à la main)
+  ? 403 https://www.cmtedd.act.gov.au/communication/holidays  (à vérifier à la main)
+  ? 403 https://nt.gov.au/nt-public-holidays  (à vérifier à la main)
+  ? 403 https://www.education.act.gov.au/public-school-life/term-dates-and-public-holidays  (à vérifier à la main)
+  ? 403 https://education.nt.gov.au/education/term-dates  (à vérifier à la main)
+. : 25 page(s) de contenu, 0 sans simulateur
+. : 27 pages, 0 avec hreflang, 0 à corriger
+. : site anglophone, contrôle sans objet.
+check-portefeuille : 0 paragraphe(s) copiés, 0 site(s) du portefeuille liés, 60 sites comparés.
+check-cookies : 0 défaut (37 pages, Clarity sur 34, GA4 G-375L4NYEN6 sur 34, langues en)
+check-url-propre: 27 page(s) du sitemap, 0 défaut(s)
+check-premier-ecran : 0 page(s) fautive(s) sur 25 page(s) à simulateur (27 pages lues)
+check-droits : 35 page(s) lues dans dist ; licences citées : CC BY ; workflow planifié : non
+  (a) liens soumis à autorisation (citer l’organisme sans lien : titre, adresse en texte, date) : 0
+  (b) relais juridique présenté comme officiel (lien vers le texte officiel, ou « relais non officiel ») : 0
+  (c) copie web.archive.org présentée comme officielle (écrire « copie archivée du JJ/MM/AAAA ») : 0
+  (d) attribution de licence absente du pied de page : 0
+  (e) promesse de mise à jour sans workflow planifié (écrire « lu le JJ/MM/AAAA, mise à jour manuelle ») : 0
+check-droits : 0 défaut
+check-copie : sans objet (pas de data/textes-sources/*.txt)
+  27 page(s), 0 champ(s) mal formaté(s)
+check-contraste: 27 page(s), 0 texte(s) sous le seuil
+check-saisie: 13 page(s) à calculateur, 0 défaut(s)
+  trame        ok         site le plus proche : bayramkacgun.com (51 % de blocs en commun)
+  chiffres     ok         date de mise à jour visible · 9 source(s) officielle(s) liée(s)
+  credibilite  ok         À propos lié · méthode liée
+  reseau       ok         liens vers : aucun site du portefeuille
+  publicite    ok         0 emplacement(s) publicitaire(s) sur l’accueil
+check-regles : 292 accueils comparés, 0 règle(s) KO ou à revoir
+check-motcle : 0/25 page(s) où le terme-clé du titre manque {}

@@ -10,17 +10,20 @@
  *   Sans lui : « Example with typical figures — change any figure… » dans la langue de la page.
  * - `modifiables` : nombre de champs que le lecteur peut changer ; à 0, aucune mention (rien à changer :
  *   le chiffre est celui de la page, pas un exemple).
+ * - `aide` (aupublicholidays.com, testeurs naïfs du 2026-11-14) : remplace « change any figure… » quand le résultat
+ *   n'est pas un exemple chiffré mais une liste officielle montrée pour un choix (« Showing New South Wales, 2027 —
+ *   pick another state or year to see yours ») : trois testeurs sur trois lisaient les dates officielles comme un exemple.
  */
 import { libellesTrame, resultatExemple } from '../../lib/libelles-trame';
 
-interface Props { lang?: string; touched?: Record<string, boolean>; className?: string; suppose?: string; modifiables?: number }
+interface Props { lang?: string; touched?: Record<string, boolean>; className?: string; suppose?: string; modifiables?: number; aide?: string }
 
-export default function MentionExemple({ lang, touched, className = '', suppose, modifiables }: Props) {
+export default function MentionExemple({ lang, touched, className = '', suppose, modifiables, aide }: Props) {
   if (modifiables === 0 || !resultatExemple(touched)) return null;
   const l = libellesTrame(lang);
   return (
     <p data-exemple className={`mb-2 rounded-md border border-amber-300 bg-amber-50 px-2 py-1 text-xs leading-snug text-amber-900 ${className}`}>
-      <strong className="font-semibold">{suppose?.trim() || l.exemple}</strong> — {l.exempleAide}
+      <strong className="font-semibold">{suppose?.trim() || l.exemple}</strong> — {aide?.trim() || l.exempleAide}
     </p>
   );
 }

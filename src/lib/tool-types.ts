@@ -15,6 +15,8 @@ export interface ToolOut {
   note?: string;
   /** What the result assumes, shown under it. */
   assume?: string;
+  /** Replaces « change any figure to see your own result » after `assume` (a list shown for a choice, not an example). */
+  assumeHelp?: string;
 }
 export interface ToolSpec { inputs: Input[]; run: (v: V) => ToolOut }
 export const optsOf = (i: SelectIn, v: V): Opt[] => (typeof i.options === 'function' ? i.options(v) : i.options);
